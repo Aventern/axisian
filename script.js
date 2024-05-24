@@ -44,3 +44,12 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         document.getElementById('contactForm').reset();
     }
 });
+
+
+// 音楽の自動再生を試みるコード
+window.addEventListener('load', () => {
+    const audio = document.getElementById('backgroundMusic');
+    audio.play().catch((error) => {
+        console.log('自動再生がブロックされました。ユーザーの操作が必要です。');
+    });
+});
