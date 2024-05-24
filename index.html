@@ -1,121 +1,70 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-
-<title>コーヒー研究部</title>
-<link rel="shortcut icon" href="images/S__2883589.jpg">
-<link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="stylesheet" type="text/css" href="main.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とある大学生の禁書目録</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-        <div class="header">
-    <script type="text/javascript" src="https://ad.netowl.jp/js/star-php.js"></script>
-    <div class="container">
-        <div class="header-left">
-            <img class="header-logo" src="images/S__2883587.jpg">
-        </div>
-        <div class="header-right">
-            <nav>
+    <header>
+        <h1>とある大学生の禁書目録</h1>
+        <nav>
             <ul>
-                <li><a href="index.html">メイン</a></li>
-                <li><a href="activities.html">活動研究内容</a></li>
-                <li><a href="members.html">メンバー</a></li>
-                <li><a href="access.html">アクセス情報</a></li>
-                <li><a href="contact.html">お問い合わせ</a></li>
+                <li><a href="#about">自己紹介</a></li>
+                <li><a href="#research">研究内容</a></li>
+                <li><a href="#blog">ブログ</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
             </ul>
-            </nav>
-        </div>
-        <div class="clear"></div>
-    </div>
-    </div>
-<main>
-    <div class="hero">
-        <div class="hero-text">
-            <h1>コーヒー研究部</h1>
-            <p>コーヒーの奥深い<br>世界を探求する</p>
-              <style>
-    .hero {
-      font-size: 3rem;
-      font-weight: bold;
-      text-align: center;
-      color: #333;
-      position: relative;
-        top: 50px;
-      animation: moveHeading 3s infinite;
-    }
+        </nav>
+    </header>
 
-    @keyframes moveHeading {
-      0% {
-        left: 0;
-        transform: translateX(0);
-      }
-      50% {
-        left: calc(100% - 300px);
-        transform: translateX(-100%);
-      }
-      100% {
-        left: 0;
-        transform: translateX(0);
-      }
-    }
-  </style>
-        </div>
-        <div class="hero-image">
-            <img src="images/S__2883591.jpg" alt="コーヒー研究部">
-        </div>
-    </div>
-    <section>
-        <h2 id="shakeText">コーヒー研究部について</h2>
-     
-        
-  <style>
-    .shake {
-      animation: shake 0.5s;
-    }
+    <main>
+        <section id="about">
+            <h2>自己紹介</h2>
+            <p>こんにちは！慶應義塾大学の学生です。主に情報工学を専攻しています。</p>
+            <p>このブログでは、私の研究内容や日々の学びについて共有します。</p>
+        </section>
 
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      20% { transform: translateX(-10px); }
-      40% { transform: translateX(10px); }
-      60% { transform: translateX(-10px); }
-      80% { transform: translateX(10px); }
-      100% { transform: translateX(0); }
-    }
-  </style>
+        <section id="research">
+            <h2>研究内容</h2>
+            <article>
+                <h3>人工知能の最新動向</h3>
+                <p>人工知能の研究における最新のトレンドについて解説します。</p>
+            </article>
+            <article>
+                <h3>量子コンピューティング</h3>
+                <p>量子コンピュータの基礎とその応用について説明します。</p>
+            </article>
+        </section>
 
-  <script>
-    const shakeText = document.getElementById('shakeText');
+        <section id="blog">
+            <h2>ブログ</h2>
+            <article>
+                <h3>日々の学び</h3>
+                <p>毎日の学習の中で得た知識や考えたことを記録します。</p>
+            </article>
+        </section>
 
-    setInterval(() => {
-      shakeText.classList.add('shake');
-      setTimeout(() => {
-        shakeText.classList.remove('shake');
-      }, 500);
-    }, 1000);
-  </script>
-        <p>コーヒー研究部は、コーヒーの魅力を探求する学生団体です。定期的な勉強会を開催し、コーヒー豆の品種や産地の違い、抽出方法の違いによる味の変化を研究しています。コーヒーの歴史や文化にも興味を持ち、コーヒーを通して新たな発見や出会いを求めています。</p>
-    </section>
-    <section>
-        <h2>新着情報</h2>
-        <div id="news"></div>
-    </section>
-</main>
-<footer>
-    <p>運営: コーヒー研究部</p>
-    <div class="footer">
-        <div class="footer-left">
-            <p>このサイトをシェアする</p>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="阿寒湖" data-show-count="false">Tweet</a>
-        </div>
-        <div class="footer-right">
-            &copy;2025 Hamayaku Coffee research club.
-        </div>
-    </div>
-</footer>
+        <section id="contact">
+            <h2>お問い合わせ</h2>
+            <p>ご意見やご質問がありましたら、以下のフォームからご連絡ください。</p>
+            <form id="contactForm">
+                <label for="name">お名前:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">メールアドレス:</label>
+                <input type="email" id="email" name="email">
+                <label for="message">メッセージ:</label>
+                <textarea id="message" name="message"></textarea>
+                <button type="submit">送信</button>
+            </form>
+        </section>
+    </main>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script src="main.js"></script>
+    <footer>
+        <p>&copy; 2024 とある大学生の禁書目録. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
