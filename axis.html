@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アクシズ教団公式サイト</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header img {
+            width: 100px;
+        }
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+        }
+        .content-section {
+            margin-bottom: 40px;
+        }
+        .content-section h2 {
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 10px;
+        }
+        .content-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="data:image/jpeg;base64,[ここにシンボルマークのbase64エンコード画像を挿入]" alt="アクシズ教団シンボルマーク">
+        <h1>アクシズ教団公式サイト</h1>
+    </header>
+
+    <nav>
+        <a href="#home">ホーム</a>
+        <a href="#teachings">教義</a>
+        <a href="#branches">支部一覧</a>
+        <a href="#members">教徒数</a>
+        <a href="#headquarters">本部</a>
+        <a href="#join">入信案内</a>
+        <a href="#contact">お問い合わせ</a>
+    </nav>
+
+    <main>
+        <section id="home" class="content-section">
+            <h2>ホーム</h2>
+            <p>ようこそ、アクシズ教団公式サイトへ！我らが水の女神アクアを称え、共に素晴らしい世界を目指しましょう。</p>
+        </section>
+
+        <section id="teachings" class="content-section">
+            <h2>教義</h2>
+            <img src="data:image/jpeg;base64,[ここに教義のbase64エンコード画像を挿入]" alt="アクシズ教の教義">
+        </section>
+
+        <section id="branches" class="content-section">
+            <h2>支部一覧</h2>
+            <p>各地域の支部情報をここに記載します。</p>
+            <ul>
+                <li><strong>東京支部</strong> - 東京都千代田区神田2-3-4</li>
+                <li><strong>大阪支部</strong> - 大阪府大阪市北区梅田1-1-1</li>
+                <!-- 他の支部情報を追加 -->
+            </ul>
+        </section>
+
+        <section id="members" class="content-section">
+            <h2>教徒数</h2>
+            <p>現在、アクシズ教団の教徒数は国内外合わせて10万人を超えています。教徒数は年々増加しており、多くの方々がアクア女神の恩恵を受けています。</p>
+        </section>
+
+        <section id="headquarters" class="content-section">
+            <h2>本部</h2>
+            <p>アクシズ教団本部の所在地と連絡先をここに記載します。</p>
+            <p>住所：東京都渋谷区代々木2-2-2</p>
+            <p>電話番号：03-1234-5678</p>
+            <p>メールアドレス：info@axis-church.jp</p>
+        </section>
+
+        <section id="join" class="content-section">
+            <h2>入信案内</h2>
+            <p>アクシズ教団への入信は簡単です。以下のフォームからお申し込みください。ご不明な点がございましたら、お気軽にお問い合わせください。</p>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2>お問い合わせ</h2>
+            <form>
+                <label for="name">名前:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">メールアドレス:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">メッセージ:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br><br>
+                <input type="submit" value="送信">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 アクシズ教団. すべての権利を保有しています。</p>
+    </footer>
+</body>
+</html>
