@@ -1,1 +1,93 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究内容のブログ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>研究内容のブログ</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="about.html">研究概要</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>最新の研究内容</h2>
+            <p>ここに研究の詳細を記載します。</p>
+            <button id="toggleButton">続きを読む</button>
+            <div id="moreContent" style="display: none;">
+                <p>追加の研究情報や詳細な説明がここに表示されます。</p>
+            </div>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2024 研究ブログ</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.getElementById("toggleButton");
+            const moreContent = document.getElementById("moreContent");
+
+            toggleButton.addEventListener("click", function() {
+                if (moreContent.style.display === "none") {
+                    moreContent.style.display = "block";
+                    toggleButton.textContent = "閉じる";
+                } else {
+                    moreContent.style.display = "none";
+                    toggleButton.textContent = "続きを読む";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
