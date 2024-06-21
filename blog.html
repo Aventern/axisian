@@ -17,6 +17,21 @@
             color: white;
             padding: 10px 0;
             text-align: center;
+            overflow: hidden;
+        }
+        #sliding-title {
+            position: absolute;
+            white-space: nowrap;
+            animation: slide 10s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         nav ul {
@@ -51,7 +66,7 @@
 </head>
 <body>
     <header id="header">
-        <h1>FOLFOXのサイト</h1>
+        <h1 id="sliding-title">FOLFOXのサイト</h1>
         <nav>
             <ul>
                 <li><a href="index.html">ホーム</a></li>
