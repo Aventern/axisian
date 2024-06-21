@@ -10,6 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         header {
@@ -22,17 +23,9 @@
         #sliding-title {
             position: absolute;
             white-space: nowrap;
-            animation: slide 10s linear infinite;
+            will-change: transform;
         }
 
-        @keyframes slide {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
 
         nav ul {
             list-style-type: none;
@@ -67,6 +60,24 @@
 <body>
     <header id="header">
         <h1 id="sliding-title">FOLFOXのサイトFOLFOXのサイトFOLFOXのサイトFOLFOXのサイト</h1>
+         <script>
+        const title = document.getElementById('sliding-title');
+        const startPosition = window.innerWidth;
+        const endPosition = -title.clientWidth;
+        const duration = 10; // アニメーションの持続時間（秒）
+
+        function animate() {
+            const currentTime = (Date.now() % (duration * 1000)) / 1000;
+            const progress = currentTime / duration;
+            const currentX = startPosition + progress * (endPosition - startPosition);
+            title.style.transform = `translateX(${currentX}px)`;
+            requestAnimationFrame(animate);
+        }
+
+        window.onload = () => {
+            animate();
+        };
+    </script>
         <nav>
             <ul>
                 <li><a href="index.html">ホーム</a></li>
