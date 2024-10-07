@@ -51,26 +51,13 @@
     </header>
      <script>
         // function to generate a random color
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-
+        function getRandomColor() {const letters = '0123456789ABCDEF';let color = '#';for (let i = 0; i < 6; i++) {color += letters[Math.floor(Math.random() * 16)];}return color;}
         // function to change the header color
-        function changeHeaderColor() {
-            const header = document.getElementById('header');
-            header.style.backgroundColor = getRandomColor();
-        }
-
+        function changeHeaderColor() {const header = document.getElementById('header');header.style.backgroundColor = getRandomColor();}
         // set interval to change color every second
         setInterval(changeHeaderColor, 10);
     </script>
     <main>
-      
         <article>
             <h2>最新の研究内容</h2>
             <p>ここに研究の詳細を記載します。</p>
@@ -79,17 +66,11 @@
                 <p>追加の研究情報や詳細な説明がここに表示されます。</p>
             </div>
         </article>
-
-
-
-
-
-
-
-          <div class="content">
+<div class="content">
         <div class="bio">
-            <h2>あんちょび</h2>
+            <h1>あんちょび</h1>
             <img src="images/IMG_5000.jpeg" style="width: 150px;height: 150px;border-radius: 50%;object-fit: cover;margin-right: 20px; " alt="ロゴマーク">
+             <h2>自己紹介</h2>
             <p>2004年1月18日生まれ（20歳）</p>
             <p>大学生の頃からウェブサイト制作に興味を持ち、
                 萩野研の友人とウェブサイトを運営する中でIT技術の楽しさに目覚めました。
@@ -122,10 +103,9 @@
             </ul>
             <h3>スキル</h3>
             <p>ピアノ演奏、1級船舶免許、空手二段、スキー1級など</p>
-        </div>
-    </div>
-           <h1>自己紹介</h1>
-        <p>とある理系学生あああああああああぁぁぁああああああああぁ
+  <h2>ブログ</h2>
+        <p>最近、ラズパイ５を手に入れたのでブログのサーバーにしようと模索中、、、</p>  
+            //  とある理系学生あああああああああぁぁぁああああああああぁ
             ぁぁああああああああぁぁぁああああああああぁぁ
             ぁああああああああぁぁぁああああああああぁぁ
             ぁああああああああぁぁぁああああああああぁぁぁああ
@@ -141,7 +121,9 @@
             ああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁああ
             ああああああぁぁぁああああああああぁぁぁ
             
-            ああぁぁぁああああああぁぁぁ</p>
+            ああぁぁぁああああああぁぁぁ           
+        </div>
+    </div>
     </main>
     <footer>
         <p>&copy; 2024 研究ブログ</p>
