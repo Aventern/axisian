@@ -3,79 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>私のブログ</title>
+    <title>研究者ポートフォリオ</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #333;
+            --background-color: #f4f4f4;
+        }
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
         header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
+            background-color: var(--primary-color);
+            color: white;
             text-align: center;
+            padding: 1rem;
         }
         nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
             display: flex;
             justify-content: center;
-            background: #444;
         }
-        nav a {
-            color: #fff;
-            padding: 14px 20px;
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: white;
             text-decoration: none;
-            text-transform: uppercase;
+            font-weight: bold;
         }
-        nav a:hover {
-            background: #555;
-        }
-        .container {
+        main {
             max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        section {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
         h1, h2 {
-            color: #333;
+            color: var(--primary-color);
         }
-        p {
-            line-height: 1.6;
+        .publication {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
         }
-        .intro {
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
             text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
-        .research {
-            margin-top: 40px;
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>私のブログ</h1>
+        <h1>山田 太郎</h1>
+        <p>人工知能研究者</p>
     </header>
+
     <nav>
-        <a href="#">ホーム</a>
-        <a href="#">自己紹介</a>
-        <a href="#">研究内容</a>
+        <ul>
+            <li><a href="#about">自己紹介</a></li>
+            <li><a href="#research">研究内容</a></li>
+            <li><a href="#publications">出版物</a></li>
+            <li><a href="#contact">連絡先</a></li>
+        </ul>
     </nav>
-    <div class="container">
-        <section class="intro">
+
+    <main>
+        <section id="about">
             <h2>自己紹介</h2>
-            <p>こんにちは！私は[あなたの名前]です。このブログでは、私の研究内容や日常の出来事について紹介しています。</p>
+            <p>私は人工知能、特に自然言語処理と機械学習の分野で研究を行っています。現在、○○大学大学院博士課程に在籍しており、AIの倫理的応用に焦点を当てた研究を進めています。</p>
         </section>
-        <section class="research">
+
+        <section id="research">
             <h2>研究内容</h2>
-            <p>ここにはあなたの研究内容についての詳細な情報を記載します。過去の研究や現在のプロジェクトについても触れましょう。</p>
+            <p>現在の研究テーマ：</p>
+            <ul>
+                <li>大規模言語モデルの解釈可能性向上</li>
+                <li>マルチモーダルAIシステムの開発</li>
+                <li>AIの公平性と透明性の評価手法</li>
+            </ul>
+            <p>これらの研究を通じて、より信頼性の高いAIシステムの開発に貢献することを目指しています。</p>
         </section>
-    </div>
+
+        <section id="publications">
+            <h2>主な出版物</h2>
+            <div class="publication">
+                <h3>"Enhancing Interpretability in Large Language Models"</h3>
+                <p>著者: 山田 太郎, 鈴木 花子</p>
+                <p>掲載誌: Journal of Artificial Intelligence, 2023</p>
+            </div>
+            <div class="publication">
+                <h3>"Ethical Considerations in Multimodal AI Systems"</h3>
+                <p>著者: 山田 太郎, 佐藤 次郎, 田中 三郎</p>
+                <p>掲載誌: AI Ethics Quarterly, 2022</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>連絡先</h2>
+            <p>Email: taro.yamada@example.com</p>
+            <p>研究室: ○○大学 ××棟 123号室</p>
+            <p>
+                <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer">Twitter</a> |
+                <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+                <a href="https://github.com/example" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 山田 太郎. All rights reserved.</p>
+    </footer>
 
     <script>
-        // JavaScript for interactive features can be added here
-        console.log("ページが読み込まれました");
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // スムーズスクロール
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // ダークモードトグル
+            const toggleDarkMode = () => {
+                document.body.classList.toggle('dark-mode');
+            };
+
+            // ダークモードボタンの追加
+            const nav = document.querySelector('nav ul');
+            const darkModeToggle = document.createElement('li');
+            darkModeToggle.innerHTML = '<a href="#" id="dark-mode-toggle">ダークモード</a>';
+            nav.appendChild(darkModeToggle);
+
+            document.getElementById('dark-mode-toggle').addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleDarkMode();
+            });
+
+            // ダークモードのスタイル
+            const style = document.createElement('style');
+            style.textContent = `
+                body.dark-mode {
+                    --text-color: #f4f4f4;
+                    --background-color: #333;
+                }
+                body.dark-mode section {
+                    background-color: #2c3e50;
+                    color: #f4f4f4;
+                }
+            `;
+            document.head.appendChild(style);
+        });
     </script>
 </body>
 </html>
-
