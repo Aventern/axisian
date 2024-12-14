@@ -169,16 +169,24 @@
         <p>掲載誌: 未定、いつかウェブサイト内に特設ページを設けます</p>
         
     </div>
-            <article>
-            <button id="toggleButton1">続きを読む</button>
-                 <style> button2.addEventListener('click', function () {
-            const url = 'https://aventern.github.io/axisian/aqua.html';
+     <div>
+    <div id="buttonContainer3"></div>
+    <script>
+        const buttonContainer3 = document.getElementById('buttonContainer2');
+        const button3 = document.createElement('button');
+        button2.textContent = '続きを読む';
+        button2.style.padding = '10px 20px';
+        button2.style.fontSize = '16px';
+        button2.addEventListener('click', function () {
+            const url = 'https://aventern.github.io/axisian/a.html';
             window.open(url, '_blank');
-    </style>
-            <div id="moreContent1" style="display: none;">
-                <p>追加の研究情報や詳細な説明がここに表示されます。</p>
-            </div>
-        </article>
+        });
+        buttonContainer2.appendChild(button2);
+        setInterval(() => {
+            button2.style.backgroundColor = getRandomColor();
+        }, 1000);
+    </script>
+</div>
 </section>
 
 
