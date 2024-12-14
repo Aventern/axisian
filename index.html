@@ -188,6 +188,24 @@
         }, 1000);
     </script>
 </div>
+            <div>
+    <div id="buttonContainer2"></div>
+    <script>
+        const buttonContainer2 = document.getElementById('buttonContainer2');
+        const button2 = document.createElement('button');
+        button2.textContent = 'アクシズ教';
+        button2.style.padding = '10px 20px';
+        button2.style.fontSize = '16px';
+        button2.addEventListener('click', function () {
+            const url = 'https://aventern.github.io/axisian/aqua.html';
+            window.open(url, '_blank');
+        });
+        buttonContainer2.appendChild(button2);
+        setInterval(() => {
+            button2.style.backgroundColor = getRandomColor();
+        }, 1000);
+    </script>
+</div>
                 <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer">Twitter</a> |
                 <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
                 <a href="https://github.com/example" target="_blank" rel="noopener noreferrer">GitHub</a>
