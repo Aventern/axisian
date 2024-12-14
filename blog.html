@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>あんちょびのブログ</title>
+
+    
     <style>
         body {font-family: Arial, sans-serif;margin: 0;padding: 0;background-color: #f4f4f4;justify-content: center; align-items: center; /* コンテンツを垂直中央揃え */width: 100vw; /* ビューポートの幅を使用 */}
 
@@ -18,11 +20,126 @@
         footer {background-color: #4CAF50;color: white;text-align: center;padding: 10px 0;position: fixed;width: 100%;bottom: 0;}
         .content {padding: 20px;width: 80%; /* コンテンツの幅を適切に設定 */max-width800px; /* 最大幅を設定 */}
         .bio {background-color: white;padding: 20px;border-radius: 8px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);}
+
+    
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #2d89ef;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            animation: slide-left 10s linear infinite;
+        }
+
+        @keyframes slide-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bio {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bio img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            float: left;
+        }
+
+        .bio h1 {
+            margin: 0 0 10px;
+        }
+
+        .bio p {
+            clear: both;
+        }
+
+        .content article {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .content article h2 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: #2d89ef;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .bio img {
+                width: 100px;
+                height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
     <header id="header">
         <h1 id="sliding-title">あんちょびのブログ</h1>
+        
          <script>
         const title = document.getElementById('sliding-title');
         const startPosition = window.innerWidth;
@@ -40,94 +157,39 @@
         window.onload = () => {
             animate();
         };
+            
     </script>
         <nav>
             <ul>
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="about.html">研究概要</a></li>
-                <li><a href="Keio.html">お問い合わせ</a></li>
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#about">研究概要</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
             </ul>
         </nav>
     </header>
-     <script>
-        // function to generate a random color
-        function getRandomColor() {const letters = '0123456789ABCDEF';let color = '#';for (let i = 0; i < 6; i++) {color += letters[Math.floor(Math.random() * 16)];}return color;}
-        // function to change the header color
-        function changeHeaderColor() {const header = document.getElementById('header');header.style.backgroundColor = getRandomColor();}
-        // set interval to change color every second
-        setInterval(changeHeaderColor, 10);
-    </script>
-    <main>
-        <article>
-            <h2>最新の研究内容</h2>
-            <p>ここに研究の詳細を記載します。</p>
-            <button id="toggleButton">続きを読む</button>
-            <div id="moreContent" style="display: none;">
-                <p>追加の研究情報や詳細な説明がここに表示されます。</p>
-            </div>
-        </article>
-<div class="content">
-        <div class="bio">
-            <h1>あんちょび</h1>
-            <img src="images/IMG_5000.jpeg" style="width: 150px;height: 150px;border-radius: 50%;object-fit: cover;margin-right: 20px; " alt="ロゴマーク">
-             <h2>自己紹介</h2>
-            <p>2004年1月18日生まれ（20歳）</p>
-            <p>大学生の頃からウェブサイト制作に興味を持ち、
-                萩野研の友人とウェブサイトを運営する中でIT技術の楽しさに目覚めました。
-                現在は、慶應義塾大学経済学部に在籍し、
-                幅広い分野で学びを深めています。
-            <br>今後は、学際的なアプローチを活かし、
-                医療とIT技術の融合による新たな価値創造を目指しています。
-                特に、ブロックチェーン技術を活用した医療データの管理や、
-                前の大学で専攻した疫学研究への応用に強い関心を持っています。
-            </p>
-            <p>主な興味・研究分野は、ブロックチェーン技術を応用したフィンテック、ゼロトラスト（ZT）セキュリティ、
-                核医学、疫学、そしてハンセン病です。これらの分野を横断的に研究し、新しい知見の創出を目指しています。
-                現在の活動としては、大学でTeaching Assistantを務める傍ら、
-                個人でウェブサイトの運営や不動産業にも携わっています。多岐にわたる活動を通じて、
-                幅広い視野と実践的なスキルを磨いています。
-                </p>
-            <h3>所属研究会・学会</h3>
-            <ul>
-                <li>慶應義塾大学・村井合同研究会・Ｄelight</li>
-                <li>順天堂大学東洋医学研究会</li>
-                <li>MÖBIUS GROUP</li>
-                <li>情報処理学会デジタルコンテンツクリエーション研究会</li>
- 
-                <li>日本生化学会</li>
-                <li>日本放射線技術学会・核医学部会</li>
-                <li>情報処理学会</li>
 
-                <li>日本疫学会</li>
-                
-            </ul>
-            <h3>スキル</h3>
-            <p>ピアノ演奏、1級船舶免許、空手二段、スキー1級など</p>
-  <h2>ブログ</h2>
-        <p>最近、ラズパイ５を手に入れたのでブログのサーバーにしようと模索中、、、</p>  
-            あああああああああぁぁぁああああああああぁ
-            ぁぁああああああああぁぁぁああああああああぁぁ
-            ぁああああああああぁぁぁああああああああぁぁ
-            ぁああああああああぁぁぁああああああああぁぁぁああ
-            ああああああああぁぁぁああああああああぁぁぁああああああ
-            ああぁぁぁああああああああぁぁぁああああああ
-            ああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁ
-            ああああああああぁぁぁああああああああぁぁぁ
-            ああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁ
-            ああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁ
-            ああああああああぁぁぁああああああああぁぁぁ
-            ああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁ
-            ああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁ
-            ああああああああぁぁぁああああああああぁぁぁああああああああぁぁぁああ
-            ああああああぁぁぁああああああああぁぁぁ
-            
-            ああぁぁぁああああああぁぁぁ           
-        </div>
-    </div>
-            <h1>よろしくおねがいしますん</h1>
+    
+    <main>
+        <section class="bio">
+            <img src="images/IMG_5000.jpeg" alt="あんちょび">
+            <h1>あんちょび</h1>
+            <p>慶應義塾大学経済学部在籍の大学生で、ウェブ制作や医療IT技術に関心を持っています。</p>
+            <p>趣味はピアノ演奏、空手、スキー。ブロックチェーンや疫学を中心に研究中。</p>
+        </section>
+
+        <section class="content">
+            <article>
+                <h2>最新の研究内容</h2>
+                <p>ラズパイ5を使った新しいプロジェクトを進行中。</p>
+                <button id="toggleButton">続きを読む</button>
+                <div id="moreContent" style="display: none;">
+                    <p>追加の研究情報やプロジェクトの詳細について、近日公開予定です！</p>
+                </div>
+            </article>
+        </section>
     </main>
     <footer>
-        <p>&copy; 2024 研究ブログ</p>
+        <p>&copy; 2024 あんちょびのブログ. All rights reserved.</p>
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
