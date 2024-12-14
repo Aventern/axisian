@@ -1,106 +1,133 @@
 
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>慶応義塾大学きらら同好会</title>
+    <title>新しいデザインのウェブサイト</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background: url('A_professional_and_modern_website_background_desig.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
         }
 
         header {
-            background-color: #f8b500;
-            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #2d89ef;
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 15px;
         }
 
         nav ul {
-            list-style-type: none;
-            margin: 0;
+            list-style: none;
             padding: 0;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         nav ul li {
             display: inline;
-            margin: 0 15px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: white;
+            color: #333;
             font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #2d89ef;
+            color: white;
         }
 
         main {
-            padding: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        main h2 {
+            font-size: 1.5em;
+            color: #2d89ef;
         }
 
         footer {
-            background-color: #f8b500;
+            background-color: rgba(255, 255, 255, 0.9);
             text-align: center;
-            padding: 10px 0;
+            padding: 10px;
             position: fixed;
-            width: 100%;
             bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
 <body>
     <header>
+        <h1>新しいデザインのウェブサイト</h1>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#members">Members</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#about">概要</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="about">
-            <h1>慶応義塾大学きらら同好会へようこそ</h1>
-            <p>慶応義塾大学きらら同好会は、まんがタイムきらら作品を愛する学生のためのサークルです。</p>
-        </section>
-        <section id="events">
-            <h2>イベント</h2>
-            <p>近日開催のイベント情報はこちら。</p>
-        </section>
-        <section id="members">
-            <h2>メンバー紹介</h2>
-            <p>同好会のメンバーを紹介します。</p>
+            <h2>概要</h2>
+            <p>このウェブサイトは、現代的でプロフェッショナルなデザインを採用しています。大学や研究機関向けの洗練された構造です。</p>
         </section>
         <section id="contact">
             <h2>お問い合わせ</h2>
-            <form action="submit_form.php" method="post">
-                <label for="name">名前:</label>
-                <input type="text" id="name" name="name">
-                <label for="email">メールアドレス:</label>
-                <input type="email" id="email" name="email">
-                <label for="message">メッセージ:</label>
-                <textarea id="message" name="message"></textarea>
-                <button type="submit">送信</button>
-            </form>
+            <p>詳細情報やご意見をお待ちしております。</p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 慶応義塾大学きらら同好会</p>
+        <p>&copy; 2024 新しいデザインのウェブサイト</p>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // ナビゲーションリンクをクリックしたときのスムーズスクロール
-            document.querySelectorAll('nav ul li a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
+
