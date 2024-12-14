@@ -158,6 +158,32 @@
             <p>Email: anchovy@sfc.wide.ad.jp</p>
             <p>研究室: 慶応義塾大学 SFC　Δ館 村井純研究室　中村修合同研究会　Delight</p>
             <p>
+                <div>
+    <div id="buttonContainer1"></div>
+    <script>
+        const buttonContainer1 = document.getElementById('buttonContainer1');
+        const button1 = document.createElement('button');
+        button1.textContent = '98【くーや】Youtube';
+        button1.style.padding = '10px 20px';
+        button1.style.fontSize = '16px';
+        button1.addEventListener('click', function () {
+            const url = 'https://www.youtube.com/channel/UC2fpcSwKT4AnFJzBPkwTT1w';
+            window.open(url, '_blank');
+        });
+        buttonContainer1.appendChild(button1);
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        setInterval(() => {
+            button1.style.backgroundColor = getRandomColor();
+        }, 1000);
+    </script>
+</div>
                 <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer">Twitter</a> |
                 <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
                 <a href="https://github.com/example" target="_blank" rel="noopener noreferrer">GitHub</a>
