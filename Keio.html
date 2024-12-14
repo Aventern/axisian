@@ -1,133 +1,81 @@
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新しいデザインのウェブサイト</title>
+    <title>私のブログ</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('A_professional_and_modern_website_background_desig.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #333;
+            background-color: #f4f4f4;
         }
-
         header {
-            background-color: rgba(255, 255, 255, 0.9);
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
             text-align: center;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        header h1 {
-            font-size: 2em;
-            color: #2d89ef;
-            margin: 0;
-        }
-
         nav {
-            margin-top: 15px;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            background: #444;
         }
-
-        nav ul li {
-            display: inline;
-        }
-
-        nav ul li a {
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
             text-decoration: none;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            background: #555;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
             color: #333;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
         }
-
-        nav ul li a:hover {
-            background-color: #2d89ef;
-            color: white;
+        p {
+            line-height: 1.6;
         }
-
-        main {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        main h2 {
-            font-size: 1.5em;
-            color: #2d89ef;
-        }
-
-        footer {
-            background-color: rgba(255, 255, 255, 0.9);
+        .intro {
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        footer p {
-            margin: 0;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            main {
-                padding: 20px;
-            }
-
-            header h1 {
-                font-size: 1.5em;
-            }
+        .research {
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>新しいデザインのウェブサイト</h1>
-        <nav>
-            <ul>
-                <li><a href="#">ホーム</a></li>
-                <li><a href="#about">概要</a></li>
-                <li><a href="#contact">お問い合わせ</a></li>
-            </ul>
-        </nav>
+        <h1>私のブログ</h1>
     </header>
-    <main>
-        <section id="about">
-            <h2>概要</h2>
-            <p>このウェブサイトは、現代的でプロフェッショナルなデザインを採用しています。大学や研究機関向けの洗練された構造です。</p>
+    <nav>
+        <a href="#">ホーム</a>
+        <a href="#">自己紹介</a>
+        <a href="#">研究内容</a>
+    </nav>
+    <div class="container">
+        <section class="intro">
+            <h2>自己紹介</h2>
+            <p>こんにちは！私は[あなたの名前]です。このブログでは、私の研究内容や日常の出来事について紹介しています。</p>
         </section>
-        <section id="contact">
-            <h2>お問い合わせ</h2>
-            <p>詳細情報やご意見をお待ちしております。</p>
+        <section class="research">
+            <h2>研究内容</h2>
+            <p>ここにはあなたの研究内容についての詳細な情報を記載します。過去の研究や現在のプロジェクトについても触れましょう。</p>
         </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 新しいデザインのウェブサイト</p>
-    </footer>
+    </div>
+
+    <script>
+        // JavaScript for interactive features can be added here
+        console.log("ページが読み込まれました");
+    </script>
 </body>
 </html>
 
