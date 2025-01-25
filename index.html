@@ -13,7 +13,8 @@
    
 <link rel="icon" href="images/anchovy.jpg">
 <link rel="apple-touch-icon" href="images/anchovy.jpg">
-    <title>研究所端末</title>
+
+    <title>あんちょび研究所</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
         
@@ -219,7 +220,7 @@
     <div class="scanline"></div>
     <div class="container">
         <header>
-            <h1>研究所端末</h1>
+            <h1>あんちょび研究所</h1>
             <nav>
                 <ul>
                     <li><a href="#home">ホーム</a></li>
@@ -246,9 +247,8 @@
                     プロジェクト_ベータ: 分析中 [███████___] 70%<br>
                     プロジェクト_ガンマ: 初期化中 [██________] 20%
                 </div>
-                <button id="toggleButton" class="btn">過去の研究データを表示</button>
-                <div id="pastResearch" class="hidden"> <div id="moreContent" style="display: none;">
-    
+                <button id="showPastResearch" class="btn">過去の研究データを表示</button>
+                <div id="pastResearch" class="hidden">
                     <h3>過去の研究データ</h3>
                     <div class="terminal-text">
                         プロジェクト_デルタ: 完了 [██████████] 100%<br>
@@ -281,5 +281,24 @@
         // ホバーエフェクトの音声
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('mouseenter', () => {
-                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZRQ0PVqzn77BdGAg+ltryxnMpBSl+zPLaizsIGGS57OihUBELTKXh8bllHgU2jdXzzn0vBSF1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUuhM/z1YU2Bhxqvu7mnEgODlOq5O+zYBoGPJPY88p2KwUme8rx3I4+CRZiturqpVITC0mi4PK8aB8GM4nU8tGAMQYfcsLu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZaLvt559NEAxPqOPwtmMcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgjQGHm7A7+OaRQ0PVqzn77BdGAg+ltrzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZRQ0PVqzn77BdGAg+ltryxnMpBSl+zPLaizsIGGS57OihUBELTKXh8bllHgU2jdXzzn0vBSF1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUuhM/z1YU2Bhxqvu7mnEgODlOq5O+zYBoGPJPY88p2KwUme8rx3I4+CRZiturqpVITC0mi4PK8aB8GM4nU8tGAMQYfcsLu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZaLvt559NEAxPqOPwtmMcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgjQGHm7A7+OaRQ0PVqzn77BdGAg+ltrzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ
+
+
+            });
+        });
+
+        // 過去の研究データボタンの機能
+        document.getElementById('showPastResearch').addEventListener('click', function() {
+            const pastResearch = document.getElementById('pastResearch');
+            if (pastResearch.classList.contains('hidden')) {
+                pastResearch.classList.remove('hidden');
+                this.textContent = '過去の研究データを隠す';
+            } else {
+                pastResearch.classList.add('hidden');
+                this.textContent = '過去の研究データを表示';
+            }
+        });
+    </script>
+</body>
+</html>
 
