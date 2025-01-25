@@ -13,9 +13,9 @@
    
 <link rel="icon" href="images/anchovy.jpg">
 <link rel="apple-touch-icon" href="images/anchovy.jpg">
-    <title>Research Laboratory Terminal</title>
+    <title>研究所端末</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
         
         * {
             margin: 0;
@@ -26,7 +26,7 @@
         body {
             background-color: #000;
             color: #00ff00;
-            font-family: 'VT323', monospace;
+            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
             line-height: 1.6;
             padding: 20px;
             position: relative;
@@ -142,7 +142,7 @@
         }
 
         .terminal-text {
-            font-family: monospace;
+            font-family: 'Share Tech Mono', monospace;
             margin: 1em 0;
             padding: 1em;
             background: rgba(0, 0, 0, 0.3);
@@ -188,52 +188,86 @@
             from { transform: translateY(0); }
             to { transform: translateY(100vh); }
         }
+
+        .btn {
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #pastResearch {
+            margin-top: 1em;
+        }
     </style>
 </head>
 <body>
     <div class="scanline"></div>
     <div class="container">
         <header>
-            <h1>Anchovy Laboratory Terminal</h1>
+            <h1>研究所端末</h1>
             <nav>
                 <ul>
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#research">RESEARCH</a></li>
-                    <li><a href="#projects">PROJECTS</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#home">ホーム</a></li>
+                    <li><a href="#research">研究</a></li>
+                    <li><a href="#projects">プロジェクト</a></li>
+                    <li><a href="#contact">連絡</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
             <section id="home">
-                <h2>システム　ステータス</h2>
+                <h2>システム状態</h2>
                 <div class="terminal-text">
-                    ターミナル有効化...接続確立
+                    端末アクティブ... 接続確立
                 </div>
-                <p>Welcome to the anchovy research laboratory terminal interface. Access granted.<br><訳>あんちょび研究所ターミナルインターフェースへようこそ。アクセス権限を取得しました。</p>
+                <p>研究所端末インターフェースへようこそ。アクセス許可されました。</p>
             </section>
 
             <section id="research">
                 <h2>現在の研究</h2>
                 <div class="terminal-text">
-                    PROJECT_WIP: IN PROGRESS [██████████] 100%<br>
-                    PROJECT_TERM: ANALYZING [███████___] 70%<br>
-                    PROJECT_GP: INITIALIZING [██________] 20%
+                    プロジェクト_アルファ: 進行中 [██████████] 100%<br>
+                    プロジェクト_ベータ: 分析中 [███████___] 70%<br>
+                    プロジェクト_ガンマ: 初期化中 [██________] 20%
+                </div>
+                <button id="showPastResearch" class="btn">過去の研究データを表示</button>
+                <div id="pastResearch" class="hidden">
+                    <h3>過去の研究データ</h3>
+                    <div class="terminal-text">
+                        プロジェクト_デルタ: 完了 [██████████] 100%<br>
+                        プロジェクト_イプシロン: 中止 [████______] 40%<br>
+                        プロジェクト_ゼータ: 完了 [██████████] 100%
+                    </div>
                 </div>
             </section>
 
             <section id="projects">
-                <h2>プロジェクト データベース</h2>
+                <h2>プロジェクトデータベース</h2>
                 <div class="terminal-text">
                     セキュアデータベースにアクセス中...<br>
-                    CLEARANCE LEVEL: TOP SECRET
+                    クリアランスレベル: 最高機密
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>TERMINAL ID: LAB-001 // SYSTEM VERSION: 1.0.0</p>
+            <p>端末ID: LAB-001 // システムバージョン: 1.0.0</p>
         </footer>
     </div>
 
@@ -246,11 +280,5 @@
         // ホバーエフェクトの音声
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('mouseenter', () => {
-                const audio = new Audio('data:audio/wav;base64,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');
-                audio.volume = 0.1;
-                audio.play();
-            });
-        });
-    </script>
-</body>
-</html>
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZRQ0PVqzn77BdGAg+ltryxnMpBSl+zPLaizsIGGS57OihUBELTKXh8bllHgU2jdXzzn0vBSF1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUuhM/z1YU2Bhxqvu7mnEgODlOq5O+zYBoGPJPY88p2KwUme8rx3I4+CRZiturqpVITC0mi4PK8aB8GM4nU8tGAMQYfcsLu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZaLvt559NEAxPqOPwtmMcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgjQGHm7A7+OaRQ0PVqzn77BdGAg+ltrzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ
+
