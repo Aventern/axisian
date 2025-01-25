@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,156 +10,30 @@
    <meta property="og:description" content="あんちょびの研究や最近の出来事を掲載したホームページです。">
    <meta property="og:url" content="https://aventern.github.io/axisian/">
    <meta property="og:image" herf="images/anchovy.jpg">
-
-   
 <link rel="icon" href="images/anchovy.jpg">
-<link rel="apple-touch-icon" href="images/anchovy.jpg">
-
-    <title>あんちょび研究所</title>
+    <title>研究所端末</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             background-color: #000;
             color: #00ff00;
             font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
             line-height: 1.6;
             padding: 20px;
-            position: relative;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ブラウン管エフェクト */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.15),
-                rgba(0, 0, 0, 0.15) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle at center,
-                transparent 0,
-                rgba(0, 0, 0, 0.3) 100%
-            );
-            pointer-events: none;
-            z-index: 2;
+            margin: 0;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 3;
-        }
-
-        header {
-            border-bottom: 2px solid #00ff00;
-            margin-bottom: 2em;
-            padding: 1em 0;
         }
 
         h1 {
             font-size: 2.5em;
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
             animation: flicker 0.3s infinite;
-        }
-
-        nav {
-            margin: 2em 0;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-        }
-
-        nav a {
-            color: #00ff00;
-            text-decoration: none;
-            font-size: 1.2em;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: #fff;
-            text-shadow: 0 0 5px #00ff00;
-        }
-
-        nav a::before {
-            content: ">";
-            position: absolute;
-            left: -1em;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover::before {
-            opacity: 1;
-        }
-
-        main {
-            padding: 2em;
-            border: 1px solid #00ff00;
-            background: rgba(0, 255, 0, 0.05);
-        }
-
-        section {
-            margin-bottom: 2em;
-        }
-
-        h2 {
-            border-left: 4px solid #00ff00;
-            padding-left: 0.5em;
-            margin-bottom: 1em;
-        }
-
-        .terminal-text {
-            font-family: 'Share Tech Mono', monospace;
-            margin: 1em 0;
-            padding: 1em;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .terminal-text::before {
-            content: ">";
-            margin-right: 0.5em;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 2em;
-            padding: 1em 0;
-            border-top: 2px solid #00ff00;
         }
 
         @keyframes flicker {
@@ -167,30 +42,14 @@
             100% { opacity: 1; }
         }
 
-        /* スキャンライン効果 */
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 50%,
-                rgba(0, 255, 0, 0.02) 50%
-            );
-            background-size: 100% 4px;
-            animation: scan 10s linear infinite;
-            pointer-events: none;
-            z-index: 4;
+        .terminal-text {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 10px;
+            margin: 10px 0;
         }
 
-        @keyframes scan {
-            from { transform: translateY(0); }
-            to { transform: translateY(100vh); }
-        }
-
-        .btn {
+        button {
             background-color: #00ff00;
             color: #000;
             border: none;
@@ -198,106 +57,84 @@
             font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
             font-size: 1em;
             cursor: pointer;
-            transition: all 0.3s;
+            margin: 10px 0;
         }
 
-        .btn:hover {
-            background-color: #fff;
-            color: #000;
-            box-shadow: 0 0 10px #00ff00;
+        button:hover {
+            background-color: #00cc00;
         }
 
-        .hidden {
-            display: none;
+        a {
+            color: #00ff00;
+            text-decoration: none;
         }
 
-        #pastResearch {
-            margin-top: 1em;
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="scanline"></div>
     <div class="container">
-        <header>
-            <h1>あんちょび研究所</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">ホーム</a></li>
-                    <li><a href="#research">研究</a></li>
-                    <li><a href="#projects">プロジェクト</a></li>
-                    <li><a href="#contact">連絡</a></li>
-                </ul>
-            </nav>
-        </header>
+        <h1>研究所端末</h1>
+        
+        <div class="terminal-text">
+            システム状態: アクティブ
+            <br>
+            接続状態: 確立
+        </div>
 
-        <main>
-            <section id="home">
-                <h2>システム状態</h2>
-                <div class="terminal-text">
-                    端末アクティブ... 接続確立
-                </div>
-                <p>研究所端末インターフェースへようこそ。アクセス許可されました。</p>
-            </section>
+        <h2>現在の研究プロジェクト</h2>
+        <div class="terminal-text">
+            プロジェクト_アルファ: 進行中 [██████████] 100%
+            <br>
+            プロジェクト_ベータ: 分析中 [███████___] 70%
+            <br>
+            プロジェクト_ガンマ: 初期化中 [██________] 20%
+        </div>
 
-            <section id="research">
-                <h2>現在の研究</h2>
-                <div class="terminal-text">
-                    プロジェクト_アルファ: 進行中 [██████████] 100%<br>
-                    プロジェクト_ベータ: 分析中 [███████___] 70%<br>
-                    プロジェクト_ガンマ: 初期化中 [██________] 20%
-                </div>
-                <button id="showPastResearch" class="btn">過去の研究データを表示</button>
-                <div id="pastResearch" class="hidden">
-                    <h3>過去の研究データ</h3>
-                    <div class="terminal-text">
-                        プロジェクト_デルタ: 完了 [██████████] 100%<br>
-                        プロジェクト_イプシロン: 中止 [████______] 40%<br>
-                        プロジェクト_ゼータ: 完了 [██████████] 100%
-                    </div>
-                </div>
-            </section>
+        <h2>過去の研究プロジェクト</h2>
+        <button onclick="window.location.href='past_research.html'">過去の研究データを表示</button>
 
-            <section id="projects">
-                <h2>プロジェクトデータベース</h2>
-                <div class="terminal-text">
-                    セキュアデータベースにアクセス中...<br>
-                    クリアランスレベル: 最高機密
-                </div>
-            </section>
-        </main>
+        <h2>研究報告書</h2>
+        <ul>
+            <li><a href="reports/project_alpha.pdf" target="_blank">プロジェクト_アルファ 報告書</a></li>
+            <li><a href="reports/project_beta.pdf" target="_blank">プロジェクト_ベータ 中間報告書</a></li>
+        </ul>
 
-        <footer>
-            <p>端末ID: LAB-001 // システムバージョン: 1.0.0</p>
-        </footer>
+        <div class="terminal-text">
+            注意: すべての研究データは最高機密です。
+            <br>
+            許可されていない閲覧や共有は厳重に禁止されています。
+        </div>
     </div>
 
     <script>
-        // カーソル点滅エフェクト
-        document.querySelectorAll('.terminal-text').forEach(element => {
-            element.innerHTML += '<span class="cursor">_</span>';
-        });
-
-        // ホバーエフェクトの音声
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZRQ0PVqzn77BdGAg+ltryxnMpBSl+zPLaizsIGGS57OihUBELTKXh8bllHgU2jdXzzn0vBSF1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUuhM/z1YU2Bhxqvu7mnEgODlOq5O+zYBoGPJPY88p2KwUme8rx3I4+CRZiturqpVITC0mi4PK8aB8GM4nU8tGAMQYfcsLu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZaLvt559NEAxPqOPwtmMcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgjQGHm7A7+OaRQ0PVqzn77BdGAg+ltrzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ0PVqzn77BdGAg+ltvzxnMpBSl+zPPaizsIGGS57OihUBELTKXh8bllHgU1jdXzzn0vBSJ1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUug8/z1YU2Bhxqvu7mnEgODlOq5O+zYRoGPJPY88p3KwUme8rx3I4+CRZht+rqpVMSC0mi4PK8aiAFM4nU8tGAMQYfccPu45ZFDBFYr+ftrVoXCECY3PLEcSYELIHO8diJOQgZZ7vt559NEAxPqOPwtmQcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgzQGHm7A7+OaRQ
-
-
-            });
-        });
-
-        // 過去の研究データボタンの機能
-        document.getElementById('showPastResearch').addEventListener('click', function() {
-            const pastResearch = document.getElementById('pastResearch');
-            if (pastResearch.classList.contains('hidden')) {
-                pastResearch.classList.remove('hidden');
-                this.textContent = '過去の研究データを隠す';
-            } else {
-                pastResearch.classList.add('hidden');
-                this.textContent = '過去の研究データを表示';
+        // ターミナル風のテキスト表示エフェクト
+        function typeWriter(elementId, text, speed) {
+            let i = 0;
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
             }
-        });
+            type();
+        }
+
+        // ページ読み込み時にエフェクトを適用
+        window.onload = function() {
+            const terminalTexts = document.querySelectorAll('.terminal-text');
+            terminalTexts.forEach((element, index) => {
+                const text = element.innerHTML;
+                element.innerHTML = '';
+                element.id = 'terminal-text-' + index;
+                setTimeout(() => typeWriter('terminal-text-' + index, text, 20), index * 1000);
+            });
+        };
     </script>
 </body>
 </html>
