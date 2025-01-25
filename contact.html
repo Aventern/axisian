@@ -57,6 +57,27 @@
         nav a:hover {
             text-decoration: underline;
         }
+
+        input {
+            background-color: #000;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 5px;
+            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
+        }
+
+        button {
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #00cc00;
+        }
     </style>
 </head>
 <body>
@@ -72,13 +93,48 @@
     </header>
     <div class="container">
         <h1>連絡先</h1>
-        <div class="terminal-text">
+         <div class="terminal-text">
             セキュアな通信チャンネルを確立中...
             暗号化プロトコル: 無効
-            エラーが起きました あなたにアクセス権限がありません
+        <div id="error-message" class="terminal-text">
+            エラーが発生しました。アクセス権限が必要です。
         </div>
-        <!-- Add more content for the contact page here -->
+        <div id="password-prompt" class="terminal-text" style="display: none;">
+            セキュアな通信チャンネルを確立するにはパスワードが必要です。
+            <br>
+            <input type="password" id="password-input" placeholder="パスワードを入力">
+            <button onclick="checkPassword()">送信</button>
+        </div>
+        <div id="contact-info" class="terminal-text" style="display: none;">
+            セキュアな通信チャンネルが確立されました。
+            <br><br>
+            研究所連絡先:
+            <br>
+            電話: 03-1234-5678
+            <br>
+            メール: secret@research-lab.co.jp
+            <br>
+            住所: 〒100-0001 東京都千代田区千代田1-1 研究所ビル
+        </div>
     </div>
+
+    <script>
+        // 3秒後にパスワードプロンプトを表示
+        setTimeout(() => {
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('password-prompt').style.display = 'block';
+        }, 3000);
+
+        function checkPassword() {
+            const password = document.getElementById('password-input').value;
+            if (password === 'anchovy') {  // 実際の運用では、このパスワードをより安全なものに変更してください
+                document.getElementById('password-prompt').style.display = 'none';
+                document.getElementById('contact-info').style.display = 'block';
+            } else {
+                alert('パスワードが間違っています。再試行してください。');
+            }
+        }
+    </script>
 </body>
 </html>
 
