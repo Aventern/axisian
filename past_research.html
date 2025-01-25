@@ -39,6 +39,7 @@
             border: 1px solid #00ff00;
             padding: 10px;
             margin: 10px 0;
+            white-space: pre-line;
         }
 
         button {
@@ -72,16 +73,13 @@
         
         <div class="terminal-text">
             アクセスレベル: 最高機密
-            <br>
             データベース: 接続済み
         </div>
 
         <h2>完了したプロジェクト</h2>
         <div class="terminal-text">
             プロジェクト_デルタ: 完了 [██████████] 100%
-            <br>
             プロジェクト_イプシロン: 中止 [████______] 40%
-            <br>
             プロジェクト_ゼータ: 完了 [██████████] 100%
         </div>
 
@@ -96,7 +94,6 @@
 
         <div class="terminal-text">
             警告: これらの過去の研究データは極秘情報です。
-            <br>
             不正アクセスは法的措置の対象となります。
         </div>
     </div>
@@ -117,7 +114,7 @@
             type();
         }
 
-        // ページ読み込み��にエフェクトを適用
+        // ページ読み込み時にエフェクトを適用
         window.onload = function() {
             const terminalTexts = document.querySelectorAll('.terminal-text');
             terminalTexts.forEach((element, index) => {
