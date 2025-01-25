@@ -3,297 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="あんちょびの研究や最近の出来事を掲載したホームページです。">
-<meta property="og:title" content="あんちょび研究所">
-   <meta property="og:site_name" content="トップ">
-   <meta property="og:description" content="あんちょびの研究や最近の出来事を掲載したホームページです。">
-   <meta property="og:url" content="https://aventern.github.io/axisian/">
-   <meta property="og:image" herf="images/anchovy.jpg">
-
-   
-<link rel="icon" href="images/anchovy.jpg">
-<link rel="apple-touch-icon" href="images/anchovy.jpg">
-    <title>あんちょび研究所</title>
+    <title>Research Laboratory Terminal</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        background-image {https://aventern.github.io/axisian/images/delight.jpg
-            
-        }
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --text-color: #333;
-            --background-color: #f4f4f4;
-        }
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'VT323', monospace;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 0;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
+
+        /* ブラウン管エフェクト */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at center,
+                transparent 0,
+                rgba(0, 0, 0, 0.3) 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+
         header {
-            background-color: var(--primary-color);
-            color: white;
+            border-bottom: 2px solid #00ff00;
+            margin-bottom: 2em;
+            padding: 1em 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
             text-align: center;
-            padding: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: flicker 0.3s infinite;
         }
+
         nav {
-            background-color: var(--secondary-color);
-            padding: 0.5rem;
+            margin: 2em 0;
         }
+
         nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+            list-style: none;
             display: flex;
             justify-content: center;
+            gap: 2em;
         }
-        nav ul li {
-            margin: 0 1rem;
-        }
-        nav ul li a {
-            color: white;
+
+        nav a {
+            color: #00ff00;
             text-decoration: none;
-            font-weight: bold;
-        }
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        section {
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        h1, h2 {
-            color: var(--primary-color);
-        }
-        .publication {
-            border-left: 4px solid var(--primary-color);
-            padding-left: 1rem;
-            margin-bottom: 1rem;
-        }
-        footer {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 1rem;
+            font-size: 1.2em;
             position: relative;
-            bottom: 0;
-            width: 100%;
         }
-        @media (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul li {
-                margin: 0.5rem 0;
-            }
+
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        nav a::before {
+            content: ">";
+            position: absolute;
+            left: -1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        main {
+            padding: 2em;
+            border: 1px solid #00ff00;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        section {
+            margin-bottom: 2em;
+        }
+
+        h2 {
+            border-left: 4px solid #00ff00;
+            padding-left: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        .terminal-text {
+            font-family: monospace;
+            margin: 1em 0;
+            padding: 1em;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .terminal-text::before {
+            content: ">";
+            margin-right: 0.5em;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2em;
+            padding: 1em 0;
+            border-top: 2px solid #00ff00;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.95; }
+            100% { opacity: 1; }
+        }
+
+        /* スキャンライン効果 */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 0, 0.02) 50%
+            );
+            background-size: 100% 4px;
+            animation: scan 10s linear infinite;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        @keyframes scan {
+            from { transform: translateY(0); }
+            to { transform: translateY(100vh); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1><font color="yello">あんちょび研究所</font></h1>
-        <p>anchovy lab</p>
-    </header>
+    <div class="scanline"></div>
+    <div class="container">
+        <header>
+            <h1>Anchovy Laboratory Terminal</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#research">RESEARCH</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">自己紹介</a></li>
-            <li><a href="#research">研究</a></li>
-            <li><a href="#publications">出版物</a></li>
-            <li><a href="#publications">成果</a></li>
-            <li><a href="#contact">連絡先</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="about">
-             <h1>あんちょび</h1>
-            <img src="images/anchovy.jpg" style="width: 150px;height: 150px;border-radius: 50%;object-fit: cover;margin-right: 20px; " alt="ロゴマーク">
-            <h2>自己紹介</h2>
-            <p>2004年に爆誕<br>
-                大学生の頃からウェブサイト制作に興味を持ち、 
-                萩野研の友人とウェブサイトを運営する中でIT技術の楽しさに目覚めました。 
-                現在は、慶應義塾大学経済学部と村井純研究室に在籍し、 幅広い分野で学びを深めています。
-                今後は、学際的なアプローチを活かし、 医療とIT技術の融合による新たな価値創造を目指しています。 
-                特に、分散システムの一つであるブロックチェーン技術を活用した医療統計の管理や、 
-                前の大学で専攻した疫学研究への応用に強い関心を持っています。
-                主な興味・研究分野は、ブロックチェーン技術を応用したフィンテック、ゼロトラスト（ZT）セキュリティ、 
-                核医学、疫学、そしてハンセン病です。これらの分野を横断的に研究し、新しい知見の創出を目指しています。
-                現在の活動としては、大学でTeaching Assistantを務める傍ら、 個人でウェブサイトの運営や不動産業にも携わっています。
-                多岐にわたる活動を通じて、 他分野への応用に焦点を当てた研究を進めています。
-            </p>
-        </section>
-
-        <section id="research">
-            <h2>研究内容</h2>
-            <p>現在の研究テーマ：</p>
-            <ul>
-                <li>あんちょびコインの実装</li>
-                <li>pklockの実用化に向けた引継ぎ</li>
-                <li>ハッシュ関数を用いた不動産登記システムの提案</li>
-            </ul>
-            <p>これらの研究を通じて、より信頼性の高い分散システムの開発に貢献することを目指しています。</p>
-        </section>
-
-
-        <section id="publications">
-            <h2>主な出版物</h2>
-            <div class="publication">
-                <h3>"Enhancing Interpretability in Large Language Models"</h3>
-                <p>著者: 山田 太郎, 鈴木 花子</p>
-                <p>掲載誌: Journal of Artificial Intelligence, 2023</p>
-            </div>
-            <div class="publication">
-                <h3>"Ethical Considerations in Multimodal AI Systems"</h3>
-                <p>著者: 山田 太郎, 佐藤 次郎, 田中 三郎</p>
-                <p>掲載誌: AI Ethics Quarterly, 2022</p>
-            </div>
-        </section>
-        
-     
-
-        <section id="publications">
-    <h2>研究成果</h2>
-    <div class="publication">
-        <h3>"Identifying the transmission route of leprosy-causing Mycobacterium leprae and vector"</h3>
-        <p>内容: ハンセン病の原因菌である\"らい菌\"と媒介生物の感染経路を疫学調査の症例対照研究による特定</p>
-        <p>掲載誌: 未定、いつかウェブサイト内に特設ページを設けます</p>
-        <a href="https://aventern.github.io/axisian/a.html" >続きを読む</a>
-    </div>
+        <main>
+            <section id="home">
+                <h2>SYSTEM STATUS</h2>
+                <div class="terminal-text">
+                    TERMINAL ACTIVE... CONNECTION ESTABLISHED
+                </div>
+                <p>Welcome to the research laboratory terminal interface. Access granted.</p>
             </section>
-     <div>
-    <div id="buttonContainer3"></div>
+
+            <section id="research">
+                <h2>CURRENT RESEARCH</h2>
+                <div class="terminal-text">
+                    PROJECT_ALPHA: IN PROGRESS [██████████] 100%<br>
+                    PROJECT_BETA: ANALYZING [███████___] 70%<br>
+                    PROJECT_GAMMA: INITIALIZING [██________] 20%
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>PROJECT DATABASE</h2>
+                <div class="terminal-text">
+                    ACCESSING SECURE DATABASE...<br>
+                    CLEARANCE LEVEL: TOP SECRET
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>TERMINAL ID: LAB-001 // SYSTEM VERSION: 1.0.0</p>
+        </footer>
+    </div>
+
     <script>
-        const buttonContainer3 = document.getElementById('buttonContainer2');
-        const button3 = document.createElement('button');
-        button2.textContent = '続きを読む';
-        button2.style.padding = '10px 20px';
-        button2.style.fontSize = '16px';
-        button2.addEventListener('click', function () {
-            const url = 'https://aventern.github.io/axisian/a.html';
-            window.open(url, '_blank');
+        // カーソル点滅エフェクト
+        document.querySelectorAll('.terminal-text').forEach(element => {
+            element.innerHTML += '<span class="cursor">_</span>';
         });
-        buttonContainer2.appendChild(button2);
-        setInterval(() => {
-            button2.style.backgroundColor = getRandomColor();
-        }, 1000);
-    </script>
-</div>
 
-
-
-
-
-        <section id="contact">
-            <h2>連絡先</h2>
-            <p>Email: anchovy@sfc.wide.ad.jp</p>
-            <p>研究室: 慶応義塾大学 SFC　Δ館 村井純研究室　中村修合同研究会　Delight</p>
-            <p>
-                <div>
-    <div id="buttonContainer1"></div>
-    <script>
-        const buttonContainer1 = document.getElementById('buttonContainer1');
-        const button1 = document.createElement('button');
-        button1.textContent = 'Delight';
-        button1.style.padding = '10px 20px';
-        button1.style.fontSize = '16px';
-        button1.addEventListener('click', function () {
-            const url = 'https://delight.sfc.wide.ad.jp/';
-            window.open(url, '_blank');
-        });
-        buttonContainer1.appendChild(button1);
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-        setInterval(() => {
-            button1.style.backgroundColor = getRandomColor();
-        }, 1000);
-    </script>
-</div>
-            <div>
-    <div id="buttonContainer2"></div>
-    <script>
-        const buttonContainer2 = document.getElementById('buttonContainer2');
-        const button2 = document.createElement('button');
-        button2.textContent = 'アクシズ教';
-        button2.style.padding = '10px 20px';
-        button2.style.fontSize = '16px';
-        button2.addEventListener('click', function () {
-            const url = 'https://aventern.github.io/axisian/aqua.html';
-            window.open(url, '_blank');
-        });
-        buttonContainer2.appendChild(button2);
-        setInterval(() => {
-            button2.style.backgroundColor = getRandomColor();
-        }, 1000);
-    </script>
-</div>
-                <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer">Twitter</a> |
-                <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-                <a href="https://github.com/example" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 山田 太郎. All rights reserved.</p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // スムーズスクロール
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
+        // ホバーエフェクトの音声
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                const audio = new Audio('data:audio/wav;base64,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');
+                audio.volume = 0.1;
+                audio.play();
             });
-
-            // ダークモードトグル
-            const toggleDarkMode = () => {
-                document.body.classList.toggle('dark-mode');
-            };
-
-            // ダークモードボタンの追加
-            const nav = document.querySelector('nav ul');
-            const darkModeToggle = document.createElement('li');
-            darkModeToggle.innerHTML = '<a href="#" id="dark-mode-toggle">ダークモード</a>';
-            nav.appendChild(darkModeToggle);
-
-            document.getElementById('dark-mode-toggle').addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleDarkMode();
-            });
-
-            // ダークモードのスタイル
-            const style = document.createElement('style');
-            style.textContent = `
-                body.dark-mode {
-                    --text-color: #f4f4f4;
-                    --background-color: #333;
-                }
-                body.dark-mode section {
-                    background-color: #2c3e50;
-                    color: #f4f4f4;
-                }
-            `;
-            document.head.appendChild(style);
         });
     </script>
 </body>
