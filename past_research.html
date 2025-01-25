@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>過去の研究データ - 研究所端末</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
+        
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            animation: flicker 0.3s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.95; }
+            100% { opacity: 1; }
+        }
+
+        .terminal-text {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #00cc00;
+        }
+
+        a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>過去の研究データ</h1>
+        
+        <div class="terminal-text">
+            アクセスレベル: 最高機密
+            <br>
+            データベース: 接続済み
+        </div>
+
+        <h2>完了したプロジェクト</h2>
+        <div class="terminal-text">
+            プロジェクト_デルタ: 完了 [██████████] 100%
+            <br>
+            プロジェクト_イプシロン: 中止 [████______] 40%
+            <br>
+            プロジェクト_ゼータ: 完了 [██████████] 100%
+        </div>
+
+        <h2>過去の研究報告書</h2>
+        <ul>
+            <li><a href="reports/project_delta.pdf" target="_blank">プロジェクト_デルタ 最終報告書</a></li>
+            <li><a href="reports/project_epsilon.pdf" target="_blank">プロジェクト_イプシロン 中止報告書</a></li>
+            <li><a href="reports/project_zeta.pdf" target="_blank">プロジェクト_ゼータ 最終報告書</a></li>
+        </ul>
+
+        <button onclick="window.location.href='index.html'">メイン画面に戻る</button>
+
+        <div class="terminal-text">
+            警告: これらの過去の研究データは極秘情報です。
+            <br>
+            不正アクセスは法的措置の対象となります。
+        </div>
+    </div>
+
+    <script>
+        // ターミナル風のテキスト表示エフェクト
+        function typeWriter(elementId, text, speed) {
+            let i = 0;
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // ページ読み込み��にエフェクトを適用
+        window.onload = function() {
+            const terminalTexts = document.querySelectorAll('.terminal-text');
+            terminalTexts.forEach((element, index) => {
+                const text = element.innerHTML;
+                element.innerHTML = '';
+                element.id = 'terminal-text-' + index;
+                setTimeout(() => typeWriter('terminal-text-' + index, text, 20), index * 1000);
+            });
+        };
+    </script>
+</body>
+</html>
+
