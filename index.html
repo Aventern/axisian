@@ -3,146 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="あんちょびの研究や最近の出来事を掲載したホームページです。">
-<meta property="og:title" content="あんちょび研究所">
-   <meta property="og:site_name" content="トップ">
-   <meta property="og:description" content="あんちょびの研究や最近の出来事を掲載したホームページです。">
-   <meta property="og:url" content="https://aventern.github.io/axisian/">
-   <meta property="og:image" herf="images/anchovy.jpg">
-<link rel="icon" href="images/anchovy.jpg">
-    <title>研究所端末</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
-        
-        body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            animation: flicker 0.3s infinite;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.95; }
-            100% { opacity: 1; }
-        }
-
-        .terminal-text {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            padding: 10px;
-            margin: 10px 0;
-            white-space: pre-line;
-        }
-
-        button {
-            background-color: #00ff00;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
-            font-size: 1em;
-            cursor: pointer;
-            margin: 10px 0;
-        }
-
-        button:hover {
-            background-color: #00cc00;
-        }
-
-        a {
-            color: #00ff00;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>CS Engineer Portfolio - Retro OS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
 </head>
 <body>
-    <div class="container">
-        <h1>あんちょび研究所</h1>
-         <header>
-        <nav>
-            <ul style="list-style: none; padding: 0; display: flex; justify-content: space-around;">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="past_research.html">RESEARCH</a></li>
-                <li><a href="projects.html">PROJECTS</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-    </header>
-
-        
-        <div class="terminal-text">
-            システム状態: アクティブ
-            接続状態: 確立
+    <div class="desktop">
+         Taskbar 
+        <div class="taskbar">
+            <button class="start-button" onclick="toggleStartMenu()">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z'/%3E%3C/svg%3E" alt="Start" width="16" height="16">
+                Start
+            </button>
+            <div class="taskbar-items" id="taskbarItems"></div>
+            <div class="system-tray">
+                <span id="clock"></span>
+            </div>
         </div>
 
-        <h2>現在の研究プロジェクト</h2>
-        <div class="terminal-text">
-            プロジェクト_WIP: 進行中 [██████████] 100%
-            プロジェクト_TERM: 分析中 [███████___] 70%
-           プロジェクト_TRANSFER: 初期化中 [██________] 20%
+         Start Menu 
+        <div class="start-menu" id="startMenu" style="display: none;">
+            <div class="start-menu-header">
+                <strong>CS Engineer</strong>
+            </div>
+            <div class="start-menu-item" onclick="openWindow('about')">
+                📁 About Me
+            </div>
+            <div class="start-menu-item" onclick="openWindow('skills')">
+                💾 Skills
+            </div>
+            <div class="start-menu-item" onclick="openWindow('projects')">
+                🖥️ Projects
+            </div>
+            <div class="start-menu-item" onclick="openWindow('contact')">
+                📧 Contact
+            </div>
+            <hr>
+            <div class="start-menu-item" onclick="openWindow('terminal')">
+                ⌨️ Terminal
+            </div>
         </div>
 
-        <h2>過去の研究プロジェクト</h2>
-        <button onclick="window.location.href='past_research.html'">過去の研究データを表示</button>
+         Desktop Icons 
+        <div class="desktop-icons">
+            <div class="icon" ondblclick="openWindow('about')">
+                <div class="icon-image">📁</div>
+                <div class="icon-label">About_Me.txt</div>
+            </div>
+            <div class="icon" ondblclick="openWindow('projects')">
+                <div class="icon-image">🖥️</div>
+                <div class="icon-label">Projects</div>
+            </div>
+            <div class="icon" ondblclick="openWindow('skills')">
+                <div class="icon-image">💾</div>
+                <div class="icon-label">Skills.exe</div>
+            </div>
+            <div class="icon" ondblclick="openWindow('terminal')">
+                <div class="icon-image">⌨️</div>
+                <div class="icon-label">Terminal</div>
+            </div>
+        </div>
 
-        <h2>研究報告書</h2>
-        <ul>
-            <li><a href="reports/project_alpha.pdf" target="_blank">プロジェクト_pk-lock 報告書</a></li>
-            <li><a href="reports/project_beta.pdf" target="_blank">プロジェクト_wip 中間報告書</a></li>
-        </ul>
+         Windows 
+         About Window 
+        <div class="window" id="about-window" style="display: none;">
+            <div class="title-bar">
+                <div class="title-bar-text">About_Me.txt - Notepad</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize" onclick="minimizeWindow('about')"></button>
+                    <button aria-label="Maximize" onclick="maximizeWindow('about')"></button>
+                    <button aria-label="Close" onclick="closeWindow('about')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="notepad-content">
+                    <pre>====================================
+  ABOUT ME
+====================================
 
-        <div class="terminal-text">
-            注意: すべての研究データは最高機密です。
-            許可されていない閲覧や共有は厳重に禁止されています。
+こんにちは！コンピューターサイエンスエンジニアです。
+
+私はソフトウェア開発、アルゴリズム設計、
+システムアーキテクチャに情熱を注いでいます。
+
+専門分野：
+- フルスタック開発
+- データ構造とアルゴリズム
+- システム設計
+- パフォーマンス最適化
+
+趣味：
+- オープンソースへの貢献
+- 技術ブログの執筆
+- レトロコンピューティング
+- 新しい技術の学習
+
+====================================</pre>
+                </div>
+            </div>
+        </div>
+
+         Skills Window 
+        <div class="window" id="skills-window" style="display: none;">
+            <div class="title-bar">
+                <div class="title-bar-text">Skills.exe</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize" onclick="minimizeWindow('skills')"></button>
+                    <button aria-label="Maximize" onclick="maximizeWindow('skills')"></button>
+                    <button aria-label="Close" onclick="closeWindow('skills')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('languages')">Languages</button>
+                    <button class="tab" onclick="switchTab('frameworks')">Frameworks</button>
+                    <button class="tab" onclick="switchTab('tools')">Tools</button>
+                </div>
+                <div class="tab-content" id="languages">
+                    <div class="skill-section">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-bar">
+                            <div class="skill-label">JavaScript / TypeScript</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-label">Python</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-label">Java</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-label">C / C++</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="frameworks" style="display: none;">
+                    <div class="skill-section">
+                        <h3>Frameworks & Libraries</h3>
+                        <ul class="skill-list">
+                            <li>React / Next.js</li>
+                            <li>Node.js / Express</li>
+                            <li>Django / Flask</li>
+                            <li>Spring Boot</li>
+                            <li>TensorFlow / PyTorch</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="tools" style="display: none;">
+                    <div class="skill-section">
+                        <h3>Tools & Technologies</h3>
+                        <ul class="skill-list">
+                            <li>Git / GitHub</li>
+                            <li>Docker / Kubernetes</li>
+                            <li>AWS / GCP</li>
+                            <li>PostgreSQL / MongoDB</li>
+                            <li>Linux / Bash</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         Projects Window 
+        <div class="window" id="projects-window" style="display: none;">
+            <div class="title-bar">
+                <div class="title-bar-text">My Projects - Explorer</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize" onclick="minimizeWindow('projects')"></button>
+                    <button aria-label="Maximize" onclick="maximizeWindow('projects')"></button>
+                    <button aria-label="Close" onclick="closeWindow('projects')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="explorer-content">
+                    <div class="project-item">
+                        <div class="project-icon">📦</div>
+                        <div class="project-info">
+                            <h3>分散システムプロジェクト</h3>
+                            <p>高可用性を持つマイクロサービスアーキテクチャの実装</p>
+                            <div class="project-tags">
+                                <span class="tag">Go</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Kubernetes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-icon">🤖</div>
+                        <div class="project-info">
+                            <h3>機械学習パイプライン</h3>
+                            <p>画像認識のためのエンドツーエンドMLパイプライン</p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">TensorFlow</span>
+                                <span class="tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-icon">🌐</div>
+                        <div class="project-info">
+                            <h3>リアルタイムチャットアプリ</h3>
+                            <p>WebSocketを使用したスケーラブルなチャットシステム</p>
+                            <div class="project-tags">
+                                <span class="tag">Node.js</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Redis</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-icon">🔐</div>
+                        <div class="project-info">
+                            <h3>暗号化ツール</h3>
+                            <p>セキュアなファイル暗号化・復号化ツール</p>
+                            <div class="project-tags">
+                                <span class="tag">C++</span>
+                                <span class="tag">OpenSSL</span>
+                                <span class="tag">CLI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         Contact Window 
+        <div class="window" id="contact-window" style="display: none;">
+            <div class="title-bar">
+                <div class="title-bar-text">Contact - Internet Mail</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize" onclick="minimizeWindow('contact')"></button>
+                    <button aria-label="Maximize" onclick="maximizeWindow('contact')"></button>
+                    <button aria-label="Close" onclick="closeWindow('contact')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="contact-content">
+                    <h2>Get In Touch</h2>
+                    <p>お気軽にご連絡ください！</p>
+                    <div class="contact-links">
+                        <a href="https://github.com/yourusername" target="_blank" class="contact-link">
+                            <span class="link-icon">🐙</span>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-link">
+                            <span class="link-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:your.email@example.com" class="contact-link">
+                            <span class="link-icon">📧</span>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://twitter.com/yourusername" target="_blank" class="contact-link">
+                            <span class="link-icon">🐦</span>
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         Terminal Window 
+        <div class="window terminal-window" id="terminal-window" style="display: none;">
+            <div class="title-bar">
+                <div class="title-bar-text">C:\WINDOWS\system32\cmd.exe</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize" onclick="minimizeWindow('terminal')"></button>
+                    <button aria-label="Maximize" onclick="maximizeWindow('terminal')"></button>
+                    <button aria-label="Close" onclick="closeWindow('terminal')"></button>
+                </div>
+            </div>
+            <div class="window-body terminal-body">
+                <div id="terminal-output">
+                    <div>Microsoft(R) Windows(R) Retro Edition</div>
+                    <div>(C) 2025 CS Engineer. All rights reserved.</div>
+                    <div>&nbsp;</div>
+                    <div>Type 'help' for available commands.</div>
+                    <div>&nbsp;</div>
+                </div>
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">C:\&gt;</span>
+                    <input type="text" id="terminal-input" class="terminal-input" autofocus>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        // ターミナル風のテキスト表示エフェクト
-        function typeWriter(elementId, text, speed) {
-            let i = 0;
-            const element = document.getElementById(elementId);
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // ページ読み込み時にエフェクトを適用
-        window.onload = function() {
-            const terminalTexts = document.querySelectorAll('.terminal-text');
-            terminalTexts.forEach((element, index) => {
-                const text = element.innerHTML;
-                element.innerHTML = '';
-                element.id = 'terminal-text-' + index;
-                setTimeout(() => typeWriter('terminal-text-' + index, text, 20), index * 1000);
-            });
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
