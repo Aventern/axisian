@@ -3,314 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated title to あんちょびOS -->
-    <title>あんちょびOS - Retro Portfolio</title>
-    <!-- Added favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23008080' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='white'%3E🐟%3C/text%3E%3C/svg%3E">
+    <title>あんちょび - Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='white'%3E🐟%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/98.css">
 </head>
 <body>
-    <div class="desktop">
-        <!-- Taskbar -->
-        <div class="taskbar">
-            <button class="start-button" onclick="toggleStartMenu()">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z'/%3E%3C/svg%3E" alt="Start" width="16" height="16">
-                Start
-            </button>
-            <div class="taskbar-items" id="taskbarItems"></div>
-            <div class="system-tray">
-                <span id="clock"></span>
-            </div>
-        </div>
+     ヘッダー 
+    <header>
+        <nav class="container">
+            <div class="logo">あんちょび</div>
+            <ul class="nav-links">
+                <li><a href="#about">自己紹介</a></li>
+                <li><a href="#skills">スキル</a></li>
+                <li><a href="#projects">プロジェクト</a></li>
+                <li><a href="#contact">連絡先</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
 
-        <!-- Start Menu -->
-        <div class="start-menu" id="startMenu" style="display: none;">
-            <!-- Updated start menu header to あんちょび -->
-            <div class="start-menu-header">
-                <strong>あんちょびのホームページ</strong>
-            </div>
-            <div class="start-menu-item" onclick="openWindow('about')">
-                📄 About Me
-            </div>
-            <div class="start-menu-item" onclick="openWindow('skills')">
-                💾 Skills
-            </div>
-            <div class="start-menu-item" onclick="openWindow('projects')">
-                🖥️ Projects
-            </div>
-            <div class="start-menu-item" onclick="openWindow('contact')">
-                📧 Contact
-            </div>
-            <hr>
-            <div class="start-menu-item" onclick="openWindow('terminal')">
-                ⌨️ Terminal
-            </div>
-        </div>
-
-        <!-- Desktop Icons -->
-        <div class="desktop-icons">
-            <!-- Added anchovy profile icon -->
-            <div class="icon" ondblclick="openWindow('about')">
-                <img src="images/anchovy.jpg" alt="あんちょび" class="icon-image-photo">
-                <div class="icon-label">あんちょびのホームページ</div>
-            </div>
-            <div class="icon" ondblclick="openWindow('about')">
-                <div class="icon-image">📄</div>
-                <div class="icon-label">About_Me.txt</div>
-            </div>
-            <div class="icon" ondblclick="openWindow('projects')">
-                <div class="icon-image">🖥️</div>
-                <div class="icon-label">Projects</div>
-            </div>
-            <div class="icon" ondblclick="openWindow('skills')">
-                <div class="icon-image">💾</div>
-                <div class="icon-label">Skills.exe</div>
-            </div>
-            <div class="icon" ondblclick="openWindow('terminal')">
-                <div class="icon-image">⌨️</div>
-                <div class="icon-label">Terminal</div>
-            </div>
-        </div>
-
-        <!-- Windows -->
-        <!-- About Window -->
-        <div class="window" id="about-window" style="display: none;">
-            <div class="title-bar">
-                <div class="title-bar-text">About_Me.txt - Notepad</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize" onclick="minimizeWindow('about')"></button>
-                    <button aria-label="Maximize" onclick="maximizeWindow('about')"></button>
-                    <button aria-label="Close" onclick="closeWindow('about')"></button>
-                </div>
-            </div>
-            <div class="window-body">
-                <div class="notepad-content">
-                    <!-- Updated about text to mention あんちょび -->
-                    <pre>====================================
-  ABOUT ME
-====================================
-
-こんにちは！あんちょびです。
-コンピューターサイエンスエンジニアです。
-
-私はソフトウェア開発、アルゴリズム設計、
-システムアーキテクチャに情熱を注いでいます。
-
-専門分野：
-- フルスタック開発
-- データ構造とアルゴリズム
-- システム設計
-- パフォーマンス最適化
-
-趣味：
-- オープンソースへの貢献
-- 技術ブログの執筆
-- レトロコンピューティング
-- 新しい技術の学習
-
-====================================</pre>
+     ヒーローセクション 
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="images/anchovy.jpg" alt="あんちょび" class="profile-image">
+                <h1>あんちょび</h1>
+                <p class="subtitle">Computer Science Engineer</p>
+                <p class="description">ソフトウェア開発、アルゴリズム設計、システムアーキテクチャに情熱を注いでいます</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
+                    <a href="#contact" class="btn btn-secondary">連絡する</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Skills Window -->
-        <div class="window" id="skills-window" style="display: none;">
-            <div class="title-bar">
-                <div class="title-bar-text">Skills.exe</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize" onclick="minimizeWindow('skills')"></button>
-                    <button aria-label="Maximize" onclick="maximizeWindow('skills')"></button>
-                    <button aria-label="Close" onclick="closeWindow('skills')"></button>
-                </div>
-            </div>
-            <div class="window-body">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('languages')">Languages</button>
-                    <button class="tab" onclick="switchTab('frameworks')">Frameworks</button>
-                    <button class="tab" onclick="switchTab('tools')">Tools</button>
-                </div>
-                <div class="tab-content" id="languages">
-                    <div class="skill-section">
-                        <h3>Programming Languages</h3>
-                        <div class="skill-bar">
-                            <div class="skill-label">JavaScript / TypeScript</div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-label">Python</div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-label">Java</div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-label">C / C++</div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 75%"></div>
-                            </div>
-                        </div>
+     自己紹介セクション 
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">自己紹介</h2>
+            <div class="about-content">
+                <p>こんにちは！あんちょびです。コンピューターサイエンスエンジニアとして、革新的なソリューションの開発に取り組んでいます。</p>
+                <p>フルスタック開発からシステム設計まで、幅広い技術領域で経験を積んできました。特にパフォーマンス最適化とスケーラブルなアーキテクチャの構築を得意としています。</p>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">💻</div>
+                        <h3>フルスタック開発</h3>
+                        <p>フロントエンドからバックエンドまで一貫した開発</p>
                     </div>
-                </div>
-                <div class="tab-content" id="frameworks" style="display: none;">
-                    <div class="skill-section">
-                        <h3>Frameworks & Libraries</h3>
-                        <ul class="skill-list">
-                            <li>React / Next.js</li>
-                            <li>Node.js / Express</li>
-                            <li>Django / Flask</li>
-                            <li>Spring Boot</li>
-                            <li>TensorFlow / PyTorch</li>
-                        </ul>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🔧</div>
+                        <h3>システム設計</h3>
+                        <p>スケーラブルで保守性の高いアーキテクチャ</p>
                     </div>
-                </div>
-                <div class="tab-content" id="tools" style="display: none;">
-                    <div class="skill-section">
-                        <h3>Tools & Technologies</h3>
-                        <ul class="skill-list">
-                            <li>Git / GitHub</li>
-                            <li>Docker / Kubernetes</li>
-                            <li>AWS / GCP</li>
-                            <li>PostgreSQL / MongoDB</li>
-                            <li>Linux / Bash</li>
-                        </ul>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚡</div>
+                        <h3>最適化</h3>
+                        <p>パフォーマンスとユーザー体験の向上</p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Projects Window -->
-        <div class="window" id="projects-window" style="display: none;">
-            <div class="title-bar">
-                <div class="title-bar-text">My Projects - Explorer</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize" onclick="minimizeWindow('projects')"></button>
-                    <button aria-label="Maximize" onclick="maximizeWindow('projects')"></button>
-                    <button aria-label="Close" onclick="closeWindow('projects')"></button>
+     スキルセクション 
+    <section id="skills" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">スキル</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>プログラミング言語</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-name">JavaScript / TypeScript</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Python</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Java</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">C / C++</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="window-body">
-                <div class="explorer-content">
-                    <div class="project-item">
-                        <div class="project-icon">📦</div>
-                        <div class="project-info">
-                            <h3>分散システムプロジェクト</h3>
-                            <p>高可用性を持つマイクロサービスアーキテクチャの実装</p>
-                            <div class="project-tags">
-                                <span class="tag">Go</span>
-                                <span class="tag">Docker</span>
-                                <span class="tag">Kubernetes</span>
-                            </div>
-                        </div>
+                <div class="skill-category">
+                    <h3>フレームワーク & ライブラリ</h3>
+                    <div class="skill-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">TensorFlow</span>
                     </div>
-                    <div class="project-item">
-                        <div class="project-icon">🤖</div>
-                        <div class="project-info">
-                            <h3>機械学習パイプライン</h3>
-                            <p>画像認識のためのエンドツーエンドMLパイプライン</p>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">AWS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-icon">🌐</div>
-                        <div class="project-info">
-                            <h3>リアルタイムチャットアプリ</h3>
-                            <p>WebSocketを使用したスケーラブルなチャットシステム</p>
-                            <div class="project-tags">
-                                <span class="tag">Node.js</span>
-                                <span class="tag">React</span>
-                                <span class="tag">Redis</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-icon">🔐</div>
-                        <div class="project-info">
-                            <h3>暗号化ツール</h3>
-                            <p>セキュアなファイル暗号化・復号化ツール</p>
-                            <div class="project-tags">
-                                <span class="tag">C++</span>
-                                <span class="tag">OpenSSL</span>
-                                <span class="tag">CLI</span>
-                            </div>
-                        </div>
+                </div>
+                <div class="skill-category">
+                    <h3>ツール & 技術</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">GCP</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Linux</span>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Contact Window -->
-        <div class="window" id="contact-window" style="display: none;">
-            <div class="title-bar">
-                <div class="title-bar-text">Contact - Internet Mail</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize" onclick="minimizeWindow('contact')"></button>
-                    <button aria-label="Maximize" onclick="maximizeWindow('contact')"></button>
-                    <button aria-label="Close" onclick="closeWindow('contact')"></button>
+     プロジェクトセクション 
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">プロジェクト</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">📦</div>
+                    <h3>分散システムプロジェクト</h3>
+                    <p>高可用性を持つマイクロサービスアーキテクチャの実装。Kubernetes上で動作する複数のサービスを統合し、スケーラブルなシステムを構築しました。</p>
+                    <div class="project-tags">
+                        <span class="tag">Go</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                    </div>
                 </div>
-            </div>
-            <div class="window-body">
-                <div class="contact-content">
-                    <h2>Get In Touch</h2>
-                    <p>お気軽にご連絡ください！</p>
-                    <div class="contact-links">
-                        <a href="https://github.com/yourusername" target="_blank" class="contact-link">
-                            <span class="link-icon">🐙</span>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-link">
-                            <span class="link-icon">💼</span>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="mailto:your.email@example.com" class="contact-link">
-                            <span class="link-icon">📧</span>
-                            <span>Email</span>
-                        </a>
-                        <a href="https://twitter.com/yourusername" target="_blank" class="contact-link">
-                            <span class="link-icon">🐦</span>
-                            <span>Twitter</span>
-                        </a>
+                <div class="project-card">
+                    <div class="project-icon">🤖</div>
+                    <h3>機械学習パイプライン</h3>
+                    <p>画像認識のためのエンドツーエンドMLパイプライン。データ収集から学習、デプロイまでを自動化し、継続的な改善を実現しました。</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🌐</div>
+                    <h3>リアルタイムチャットアプリ</h3>
+                    <p>WebSocketを使用したスケーラブルなチャットシステム。数千人の同時接続をサポートし、低レイテンシーでのメッセージング機能を提供します。</p>
+                    <div class="project-tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Redis</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🔐</div>
+                    <h3>暗号化ツール</h3>
+                    <p>セキュアなファイル暗号化・復号化ツール。AES-256暗号化を使用し、コマンドラインから簡単に操作できるインターフェースを提供します。</p>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">OpenSSL</span>
+                        <span class="tag">CLI</span>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Terminal Window -->
-        <div class="window terminal-window" id="terminal-window" style="display: none;">
-            <div class="title-bar">
-                <div class="title-bar-text">C:\WINDOWS\system32\cmd.exe</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize" onclick="minimizeWindow('terminal')"></button>
-                    <button aria-label="Maximize" onclick="maximizeWindow('terminal')"></button>
-                    <button aria-label="Close" onclick="closeWindow('terminal')"></button>
-                </div>
-            </div>
-            <div class="window-body terminal-body">
-                <div id="terminal-output">
-                    <div>Microsoft(R) Windows(R) Retro Edition</div>
-                    <div>(C) 2025 CS Engineer. All rights reserved.</div>
-                    <div>&nbsp;</div>
-                    <div>Type 'help' for available commands.</div>
-                    <div>&nbsp;</div>
-                </div>
-                <div class="terminal-input-line">
-                    <span class="terminal-prompt">C:\&gt;</span>
-                    <input type="text" id="terminal-input" class="terminal-input" autofocus>
-                </div>
+     連絡先セクション 
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">連絡先</h2>
+            <p class="contact-intro">お気軽にご連絡ください。新しいプロジェクトやコラボレーションの機会をお待ちしています。</p>
+            <div class="contact-links">
+                <a href="https://github.com/yourusername" target="_blank" class="contact-card">
+                    <div class="contact-icon">🐙</div>
+                    <div class="contact-info">
+                        <h3>GitHub</h3>
+                        <p>github.com/yourusername</p>
+                    </div>
+                </a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-info">
+                        <h3>LinkedIn</h3>
+                        <p>linkedin.com/in/yourusername</p>
+                    </div>
+                </a>
+                <a href="mailto:your.email@example.com" class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p>your.email@example.com</p>
+                    </div>
+                </a>
+                <a href="https://twitter.com/yourusername" target="_blank" class="contact-card">
+                    <div class="contact-icon">🐦</div>
+                    <div class="contact-info">
+                        <h3>Twitter</h3>
+                        <p>@yourusername</p>
+                    </div>
+                </a>
             </div>
         </div>
-    </div>
+    </section>
+
+     フッター 
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 あんちょび. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
