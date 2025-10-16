@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS Engineer Portfolio - Retro OS</title>
+    <!-- Updated title to あんちょびOS -->
+    <title>あんちょびOS - Retro Portfolio</title>
+    <!-- Added favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23008080' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='white'%3E🐟%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
 </head>
 <body>
     <div class="desktop">
-         Taskbar 
+        <!-- Taskbar -->
         <div class="taskbar">
             <button class="start-button" onclick="toggleStartMenu()">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z'/%3E%3C/svg%3E" alt="Start" width="16" height="16">
@@ -21,10 +24,11 @@
             </div>
         </div>
 
-         Start Menu 
+        <!-- Start Menu -->
         <div class="start-menu" id="startMenu" style="display: none;">
+            <!-- Updated start menu header to あんちょび -->
             <div class="start-menu-header">
-                <strong>CS Engineer</strong>
+                <strong>あんちょび</strong>
             </div>
             <div class="start-menu-item" onclick="openWindow('about')">
                 📁 About Me
@@ -44,8 +48,13 @@
             </div>
         </div>
 
-         Desktop Icons 
+        <!-- Desktop Icons -->
         <div class="desktop-icons">
+            <!-- Added anchovy profile icon -->
+            <div class="icon" ondblclick="openWindow('about')">
+                <img src="images/anchovy.jpg" alt="あんちょび" class="icon-image-photo">
+                <div class="icon-label">あんちょび</div>
+            </div>
             <div class="icon" ondblclick="openWindow('about')">
                 <div class="icon-image">📁</div>
                 <div class="icon-label">About_Me.txt</div>
@@ -64,8 +73,8 @@
             </div>
         </div>
 
-         Windows 
-         About Window 
+        <!-- Windows -->
+        <!-- About Window -->
         <div class="window" id="about-window" style="display: none;">
             <div class="title-bar">
                 <div class="title-bar-text">About_Me.txt - Notepad</div>
@@ -77,11 +86,13 @@
             </div>
             <div class="window-body">
                 <div class="notepad-content">
+                    <!-- Updated about text to mention あんちょび -->
                     <pre>====================================
   ABOUT ME
 ====================================
 
-こんにちは！コンピューターサイエンスエンジニアです。
+こんにちは！あんちょびです。
+コンピューターサイエンスエンジニアです。
 
 私はソフトウェア開発、アルゴリズム設計、
 システムアーキテクチャに情熱を注いでいます。
@@ -103,7 +114,7 @@
             </div>
         </div>
 
-         Skills Window 
+        <!-- Skills Window -->
         <div class="window" id="skills-window" style="display: none;">
             <div class="title-bar">
                 <div class="title-bar-text">Skills.exe</div>
@@ -175,7 +186,7 @@
             </div>
         </div>
 
-         Projects Window 
+        <!-- Projects Window -->
         <div class="window" id="projects-window" style="display: none;">
             <div class="title-bar">
                 <div class="title-bar-text">My Projects - Explorer</div>
@@ -239,7 +250,7 @@
             </div>
         </div>
 
-         Contact Window 
+        <!-- Contact Window -->
         <div class="window" id="contact-window" style="display: none;">
             <div class="title-bar">
                 <div class="title-bar-text">Contact - Internet Mail</div>
@@ -275,7 +286,7 @@
             </div>
         </div>
 
-         Terminal Window 
+        <!-- Terminal Window -->
         <div class="window terminal-window" id="terminal-window" style="display: none;">
             <div class="title-bar">
                 <div class="title-bar-text">C:\WINDOWS\system32\cmd.exe</div>

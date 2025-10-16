@@ -10,21 +10,19 @@
 body {
   font-family: "VT323", monospace;
   overflow: hidden;
-  background: #008080;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
+  /* Changed background to Windows XP Bliss style */
+  background: #5a98d0;
+  background-image: url("/placeholder.svg?height=1080&width=1920"),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+  background-size: cover;
+  background-position: center;
 }
 
 .desktop {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background: #008080;
+  /* Removed solid background color to show XP wallpaper */
 }
 
 /* Desktop Icons */
@@ -50,6 +48,17 @@ body {
   font-size: 48px;
   margin-bottom: 5px;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Added style for photo icon */
+.icon-image-photo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 3px solid white;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
 }
 
 .icon-label {
