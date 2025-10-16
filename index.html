@@ -8,221 +8,157 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-     ヘッダー 
-    <header>
-        <nav class="container">
+    <div class="single-page-container">
+        <header>
             <div class="logo">あんちょび</div>
-            <ul class="nav-links">
-                <li><a href="#about">自己紹介</a></li>
-                <li><a href="#skills">スキル</a></li>
-                <li><a href="#projects">プロジェクト</a></li>
-                <li><a href="#contact">連絡先</a></li>
-            </ul>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-        </nav>
-    </header>
+            <nav class="nav-links">
+                <a href="#about">自己紹介</a>
+                <a href="#skills">スキル</a>
+                <a href="#projects">プロジェクト</a>
+                <a href="#contact">連絡先</a>
+            </nav>
+        </header>
 
-     ヒーローセクション 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
+        <main class="main-content">
+            <!-- サイドバーに追加情報を詰めて配置 -->
+            <aside class="profile-sidebar">
                 <img src="images/anchovy.jpg" alt="あんちょび" class="profile-image">
                 <h1>あんちょび</h1>
                 <p class="subtitle">Computer Science Engineer</p>
-                <p class="description">ソフトウェア開発、アルゴリズム設計、システムアーキテクチャに情熱を注いでいます</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
-                    <a href="#contact" class="btn btn-secondary">連絡する</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     自己紹介セクション 
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">自己紹介</h2>
-            <div class="about-content">
-                <p>こんにちは！あんちょびです。コンピューターサイエンスエンジニアとして、革新的なソリューションの開発に取り組んでいます。</p>
-                <p>フルスタック開発からシステム設計まで、幅広い技術領域で経験を積んできました。特にパフォーマンス最適化とスケーラブルなアーキテクチャの構築を得意としています。</p>
-                <div class="about-highlights">
-                    <div class="highlight-item">
-                        <div class="highlight-icon">💻</div>
-                        <h3>フルスタック開発</h3>
-                        <p>フロントエンドからバックエンドまで一貫した開発</p>
+                
+                <div class="status-section">
+                    <div class="status-item">
+                        <span class="status-label">状態</span>
+                        <span class="status-value">🟢 稼働中</span>
                     </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">🔧</div>
-                        <h3>システム設計</h3>
-                        <p>スケーラブルで保守性の高いアーキテクチャ</p>
+                    <div class="status-item">
+                        <span class="status-label">場所</span>
+                        <span class="status-value">📍 日本</span>
                     </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">⚡</div>
-                        <h3>最適化</h3>
-                        <p>パフォーマンスとユーザー体験の向上</p>
+                    <div class="status-item">
+                        <span class="status-label">趣味</span>
+                        <span class="status-value">💻 コーディング</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-     スキルセクション 
-    <section id="skills" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">スキル</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>プログラミング言語</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-name">JavaScript / TypeScript</div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
+                <div class="quick-info">
+                    <h3>得意分野</h3>
+                    <ul>
+                        <li>フルスタック開発</li>
+                        <li>システム設計</li>
+                        <li>DevOps</li>
+                    </ul>
+                </div>
+
+                <div class="contact-links">
+                    <a href="https://github.com/yourusername" target="_blank" title="GitHub">🐙</a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn">💼</a>
+                    <a href="mailto:your.email@example.com" title="Email">📧</a>
+                    <a href="https://twitter.com/yourusername" target="_blank" title="Twitter">🐦</a>
+                </div>
+            </aside>
+
+            <!-- 中央：メインコンテンツエリア -->
+            <section class="content-area">
+                <!-- 自己紹介 -->
+                <div id="about" class="content-section">
+                    <h2>自己紹介</h2>
+                    <p>コンピューターサイエンスエンジニアとして、革新的なソリューションの開発に取り組んでいます。フルスタック開発からシステム設計まで、幅広い技術領域で経験を積んできました。</p>
+                </div>
+
+                <!-- スキル -->
+                <div id="skills" class="content-section">
+                    <h2>スキル</h2>
+                    <div class="skills-compact">
+                        <div class="skill-group">
+                            <h3>言語</h3>
+                            <div class="skill-tags">
+                                <span class="tag clickable" data-skill="javascript">JavaScript</span>
+                                <span class="tag clickable" data-skill="typescript">TypeScript</span>
+                                <span class="tag clickable" data-skill="python">Python</span>
+                                <span class="tag clickable" data-skill="java">Java</span>
+                                <span class="tag clickable" data-skill="cpp">C/C++</span>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Python</div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Java</div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">C / C++</div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%"></div>
+                        <div class="skill-group">
+                            <h3>技術</h3>
+                            <div class="skill-tags">
+                                <span class="tag clickable" data-skill="react">React</span>
+                                <span class="tag clickable" data-skill="nodejs">Node.js</span>
+                                <span class="tag clickable" data-skill="docker">Docker</span>
+                                <span class="tag clickable" data-skill="aws">AWS</span>
+                                <span class="tag clickable" data-skill="postgresql">PostgreSQL</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>フレームワーク & ライブラリ</h3>
-                    <div class="skill-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Next.js</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express</span>
-                        <span class="tag">Django</span>
-                        <span class="tag">Flask</span>
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">TensorFlow</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>ツール & 技術</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Git</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">AWS</span>
-                        <span class="tag">GCP</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">MongoDB</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-     プロジェクトセクション 
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">プロジェクト</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">📦</div>
-                    <h3>分散システムプロジェクト</h3>
-                    <p>高可用性を持つマイクロサービスアーキテクチャの実装。Kubernetes上で動作する複数のサービスを統合し、スケーラブルなシステムを構築しました。</p>
-                    <div class="project-tags">
-                        <span class="tag">Go</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
+                <!-- プロジェクト -->
+                <div id="projects" class="content-section">
+                    <h2>プロジェクト</h2>
+                    <div class="projects-compact">
+                        <div class="project-item clickable" data-project="distributed">
+                            <div class="project-header">
+                                <span class="project-icon">📦</span>
+                                <h3>分散システム</h3>
+                            </div>
+                            <p>Kubernetes上で動作するマイクロサービスアーキテクチャ</p>
+                            <div class="project-tags">
+                                <span class="tag-small">Go</span>
+                                <span class="tag-small">K8s</span>
+                            </div>
+                        </div>
+                        <div class="project-item clickable" data-project="ml">
+                            <div class="project-header">
+                                <span class="project-icon">🤖</span>
+                                <h3>ML パイプライン</h3>
+                            </div>
+                            <p>画像認識のためのエンドツーエンドMLパイプライン</p>
+                            <div class="project-tags">
+                                <span class="tag-small">Python</span>
+                                <span class="tag-small">TensorFlow</span>
+                            </div>
+                        </div>
+                        <div class="project-item clickable" data-project="chat">
+                            <div class="project-header">
+                                <span class="project-icon">🌐</span>
+                                <h3>チャットアプリ</h3>
+                            </div>
+                            <p>WebSocketを使用したリアルタイムチャットシステム</p>
+                            <div class="project-tags">
+                                <span class="tag-small">Node.js</span>
+                                <span class="tag-small">React</span>
+                            </div>
+                        </div>
+                        <div class="project-item clickable" data-project="crypto">
+                            <div class="project-header">
+                                <span class="project-icon">🔐</span>
+                                <h3>暗号化ツール</h3>
+                            </div>
+                            <p>AES-256暗号化を使用したセキュアなツール</p>
+                            <div class="project-tags">
+                                <span class="tag-small">C++</span>
+                                <span class="tag-small">OpenSSL</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-icon">🤖</div>
-                    <h3>機械学習パイプライン</h3>
-                    <p>画像認識のためのエンドツーエンドMLパイプライン。データ収集から学習、デプロイまでを自動化し、継続的な改善を実現しました。</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">AWS</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">🌐</div>
-                    <h3>リアルタイムチャットアプリ</h3>
-                    <p>WebSocketを使用したスケーラブルなチャットシステム。数千人の同時接続をサポートし、低レイテンシーでのメッセージング機能を提供します。</p>
-                    <div class="project-tags">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">React</span>
-                        <span class="tag">Redis</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">🔐</div>
-                    <h3>暗号化ツール</h3>
-                    <p>セキュアなファイル暗号化・復号化ツール。AES-256暗号化を使用し、コマンドラインから簡単に操作できるインターフェースを提供します。</p>
-                    <div class="project-tags">
-                        <span class="tag">C++</span>
-                        <span class="tag">OpenSSL</span>
-                        <span class="tag">CLI</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
+        </main>
 
-     連絡先セクション 
-    <section id="contact" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">連絡先</h2>
-            <p class="contact-intro">お気軽にご連絡ください。新しいプロジェクトやコラボレーションの機会をお待ちしています。</p>
-            <div class="contact-links">
-                <a href="https://github.com/yourusername" target="_blank" class="contact-card">
-                    <div class="contact-icon">🐙</div>
-                    <div class="contact-info">
-                        <h3>GitHub</h3>
-                        <p>github.com/yourusername</p>
-                    </div>
-                </a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-card">
-                    <div class="contact-icon">💼</div>
-                    <div class="contact-info">
-                        <h3>LinkedIn</h3>
-                        <p>linkedin.com/in/yourusername</p>
-                    </div>
-                </a>
-                <a href="mailto:your.email@example.com" class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-info">
-                        <h3>Email</h3>
-                        <p>your.email@example.com</p>
-                    </div>
-                </a>
-                <a href="https://twitter.com/yourusername" target="_blank" class="contact-card">
-                    <div class="contact-icon">🐦</div>
-                    <div class="contact-info">
-                        <h3>Twitter</h3>
-                        <p>@yourusername</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+        <!-- フッター -->
+        <footer>
+            <p>&copy; 2025 あんちょび</p>
+        </footer>
+    </div>
 
-     フッター 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 あんちょび. All rights reserved.</p>
+    <!-- モーダルウィンドウを追加 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
         </div>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>

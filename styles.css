@@ -1,4 +1,4 @@
-/* リセット & 基本設定 */
+/* 1画面完結型のコンパクトなレイアウトに変更 */
 * {
   margin: 0;
   padding: 0;
@@ -9,50 +9,42 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
   background: #000;
   color: #fff;
-  line-height: 1.6;
-  overflow-x: hidden;
+  line-height: 1.4;
+  overflow: hidden;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+.single-page-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ヘッダー */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #333;
-  z-index: 1000;
-}
-
-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 12px 24px;
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid #333;
+  flex-shrink: 0;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   color: #fff;
 }
 
 .nav-links {
   display: flex;
-  list-style: none;
-  gap: 30px;
+  gap: 20px;
 }
 
 .nav-links a {
   color: #aaa;
   text-decoration: none;
+  font-size: 13px;
   transition: color 0.3s;
 }
 
@@ -60,219 +52,178 @@ nav {
   color: #fff;
 }
 
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* ヒーローセクション */
-.hero {
-  min-height: 100vh;
+/* メインコンテンツ */
+.main-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-top: 80px;
-}
-
-.hero-content {
-  max-width: 800px;
-}
-
-.profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #fff;
-  margin-bottom: 30px;
-}
-
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  font-size: 24px;
-  color: #888;
-  margin-bottom: 20px;
-}
-
-.description {
-  font-size: 18px;
-  color: #aaa;
-  margin-bottom: 40px;
-  line-height: 1.8;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-.btn {
-  padding: 15px 30px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s;
-  display: inline-block;
-}
-
-.btn-primary {
-  background: #fff;
-  color: #000;
-}
-
-.btn-primary:hover {
-  background: #ddd;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-}
-
-.btn-secondary:hover {
-  background: #fff;
-  color: #000;
-  transform: translateY(-2px);
-}
-
-/* セクション共通 */
-.section {
-  padding: 100px 0;
-}
-
-.section-dark {
-  background: #111;
-}
-
-.section-title {
-  font-size: 36px;
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-/* 自己紹介セクション */
-.about-content p {
-  font-size: 18px;
-  color: #aaa;
-  margin-bottom: 20px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.about-highlights {
-  display: flex;
-  gap: 40px;
-  margin-top: 60px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.highlight-item {
   flex: 1;
-  min-width: 250px;
-  max-width: 350px;
-  text-align: center;
-  padding: 30px;
-  background: #111;
-  border-radius: 12px;
-  border: 1px solid #222;
-  transition: all 0.3s;
-}
-
-.highlight-item:hover {
-  border-color: #fff;
-  transform: translateY(-5px);
-}
-
-.highlight-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.highlight-item h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-.highlight-item p {
-  color: #888;
-  font-size: 16px;
-}
-
-/* スキルセクション */
-.skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.skill-category h3 {
-  font-size: 24px;
-  margin-bottom: 25px;
-  color: #fff;
-}
-
-.skill-items {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.skill-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.skill-name {
-  font-size: 16px;
-  color: #aaa;
-}
-
-.skill-bar {
-  width: 100%;
-  height: 8px;
-  background: #222;
-  border-radius: 4px;
   overflow: hidden;
 }
 
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, #fff, #888);
-  transition: width 1s ease;
+/* プロフィールサイドバー */
+.profile-sidebar {
+  width: 280px;
+  padding: 20px;
+  background: #0a0a0a;
+  border-right: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.profile-sidebar h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+
+.status-section {
+  width: 100%;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+}
+
+.status-item:not(:last-child) {
+  border-bottom: 1px solid #222;
+}
+
+.status-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.status-value {
+  color: #fff;
+}
+
+.quick-info {
+  width: 100%;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: left;
+}
+
+.quick-info h3 {
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.quick-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-info li {
+  font-size: 11px;
+  color: #aaa;
+  padding: 4px 0;
+  padding-left: 12px;
+  position: relative;
+}
+
+.quick-info li:before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #fff;
+}
+
+.contact-links {
+  display: flex;
+  gap: 12px;
+}
+
+/* コンテンツエリア */
+.content-area {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content-section {
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.content-section h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #fff;
+  border-bottom: 1px solid #333;
+  padding-bottom: 8px;
+}
+
+.content-section p {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* スキルセクション */
+.skills-compact {
+  display: flex;
+  gap: 20px;
+}
+
+.skill-group {
+  flex: 1;
+}
+
+.skill-group h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 6px;
 }
 
 .tag {
-  padding: 8px 16px;
-  background: #222;
+  padding: 4px 10px;
+  background: #1a1a1a;
   border: 1px solid #333;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 4px;
+  font-size: 11px;
   color: #aaa;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 
 .tag:hover {
@@ -281,141 +232,96 @@ nav {
   border-color: #fff;
 }
 
-/* プロジェクトセクション */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* クリック可能な要素にカーソルを追加 */
+.clickable {
+  cursor: pointer;
 }
 
-.project-card {
+/* プロジェクトセクション */
+.projects-compact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.project-item {
   background: #111;
   border: 1px solid #222;
-  border-radius: 12px;
-  padding: 30px;
-  transition: all 0.3s;
+  border-radius: 6px;
+  padding: 12px;
+  transition: all 0.2s;
 }
 
-.project-card:hover {
+.project-item:hover {
   border-color: #fff;
-  transform: translateY(-5px);
+  transform: translateY(-2px);
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .project-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 20px;
 }
 
-.project-card h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
+.project-item h3 {
+  font-size: 14px;
+  color: #fff;
 }
 
-.project-card p {
-  color: #aaa;
-  margin-bottom: 20px;
-  line-height: 1.6;
+.project-item p {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
 .project-tags {
   display: flex;
+  gap: 4px;
   flex-wrap: wrap;
-  gap: 8px;
 }
 
-/* 連絡先セクション */
-.contact-intro {
-  text-align: center;
-  font-size: 18px;
-  color: #aaa;
-  margin-bottom: 50px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 25px;
-  background: #000;
-  border: 1px solid #222;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #fff;
-  transition: all 0.3s;
-}
-
-.contact-card:hover {
-  border-color: #fff;
-  transform: translateY(-3px);
-}
-
-.contact-icon {
-  font-size: 40px;
-}
-
-.contact-info h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.contact-info p {
+.tag-small {
+  padding: 2px 6px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 3px;
+  font-size: 10px;
   color: #888;
-  font-size: 14px;
 }
 
 /* フッター */
 footer {
-  background: #000;
-  border-top: 1px solid #222;
-  padding: 30px 0;
+  padding: 12px 24px;
   text-align: center;
+  border-top: 1px solid #333;
+  background: #0a0a0a;
+  font-size: 11px;
   color: #666;
+  flex-shrink: 0;
 }
 
-/* レスポンシブ */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
+/* スクロールバー */
+.content-area::-webkit-scrollbar {
+  width: 8px;
+}
 
-  .mobile-menu-btn {
-    display: block;
-  }
+.content-area::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
 
-  .hero h1 {
-    font-size: 36px;
-  }
+.content-area::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
 
-  .subtitle {
-    font-size: 20px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .about-highlights {
-    flex-direction: column;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* スムーズスクロール */
@@ -423,18 +329,203 @@ html {
   scroll-behavior: smooth;
 }
 
-/* スクロールアニメーション */
-@keyframes fadeInUp {
+/* モーダルスタイルを追加 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s;
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #0a0a0a;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+#modal-body h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+#modal-body p {
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+#modal-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#modal-body li {
+  font-size: 14px;
+  color: #aaa;
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+}
+
+#modal-body li:before {
+  content: "▸ ";
+  color: #fff;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-.section > * {
-  animation: fadeInUp 0.6s ease-out;
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* レスポンシブデザインを強化 */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .profile-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #333;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .profile-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile-sidebar h1 {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+  }
+
+  .status-section,
+  .quick-info {
+    max-width: 400px;
+  }
+
+  .contact-links a {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+  }
+
+  .projects-compact {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-compact {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .content-area {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .content-section {
+    padding: 16px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+  }
+
+  #modal-body h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 10px 16px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+  }
+
+  .content-section h2 {
+    font-size: 16px;
+  }
+
+  .project-item h3 {
+    font-size: 12px;
+  }
+
+  .project-item p {
+    font-size: 10px;
+  }
 }
