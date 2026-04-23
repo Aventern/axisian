@@ -3,51 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>過去の研究データ - 研究所端末</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
-        
-        body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-            margin: 0;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>研究データ - MATRIX SYSTEM</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2300ff00'%3E$%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="scan-effect">
+    <header>
+        <div class="logo">
+            <i class="fas fa-terminal"></i> anchovy
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">[ home ]</a></li>
+                <li><a href="projects.html">[ projects ]</a></li>
+                <li><a href="blog.html">[ blog ]</a></li>
+                <li><a href="#papers">[ papers ]</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    <div class="page-header">
+        <h1><i class="fas fa-book-open"></i> RESEARCH ARCHIVE</h1>
+        <p style="color: #00aa00; margin-top: 8px;">» 過去の研究データと発表論文</p>
+    </div>
 
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            animation: flicker 0.3s infinite;
-        }
+    <div class="page-content">
+        <div class="container">
+            <!-- Research Overview -->
+            <div class="terminal-section">
+                <h2><i class="fas fa-flask-vial"></i> RESEARCH SUMMARY</h2>
+                <div class="terminal-text">
+$ ls -la ~/research
+total 2847
+├─ Published Papers: 12
+├─ Conferences: 8
+├─ Collaboration Projects: 5
+├─ Patents: 2 (pending)
+└─ Citations: 847
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.95; }
-            100% { opacity: 1; }
-        }
+$ stat research/
+Access Time: 2024-04-23
+Last Modified: 2024-04-20
+Total Size: 3.2 GB
+Archive Format: PDF + ZIP
+                </div>
+            </div>
 
-        .terminal-text {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            padding: 10px;
-            margin: 10px 0;
-            white-space: pre-line;
-        }
+            <!-- 2023-2024 Research -->
+            <div class="terminal-section" style="margin-top: 24px;">
+                <h2><i class="fas fa-calendar"></i> 2023-2024 研究</h2>
+                
+                <div style="display: grid; gap: 16px;">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">📡</span>
+                            <h3>Network Optimization Study</h3>
+                        </div>
+                        <p>大規模ネットワークの最適化に関する研究。SDNとOpenFlowを用いた動的ルーティングアルゴリズムの開発。</p>
+                        <div class="terminal-text">
+Paper: "Dynamic Network Path Optimization using ML"
+Venue: IEEE Communications Magazine 2024
+Authors: Anchovy et al.
+Impact Factor: 8.2
+Status: Published ✓
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">SDN</span>
+                            <span class="tag-small">Machine Learning</span>
+                            <span class="tag-small">Network Optimization</span>
+                        </div>
+                    </div>
 
-        button {
-            background-color: #00ff00;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🔒</span>
+                            <h3>Cryptographic Protocol Analysis</h3>
+                        </div>
+                        <p>ポスト量子暗号プロトコルの安全性分析。既存の暗号化方式の脆弱性発見と改善提案。</p>
+                        <div class="terminal-text">
+Paper: "Post-Quantum Cryptography Vulnerabilities"
+Venue: ACM CCS 2023
+Authors: Anchovy, Research Team
+Acceptance Rate: 18.9%
+Status: Published ✓
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Cryptography</span>
+                            <span class="tag-small">Security</span>
+                            <span class="tag-small">Post-Quantum</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">☁️</span>
+                            <h3>Edge Computing Framework</h3>
+                        </div>
+                        <p>エッジコンピューティングの分散フレームワーク開発。レイテンシと資源効率を両立させる方式の提案。</p>
+                        <div class="terminal-text">
+Paper: "Efficient Edge Resource Allocation Framework"
+Venue: IEEE IoT Conference 2024
+Authors: Anchovy, Collaborators
+Presentations: 3 major conferences
+Status: Presented
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Edge Computing</span>
+                            <span class="tag-small">IoT</span>
+                            <span class="tag-small">Resource Allocation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2021-2022 Research -->
+            <div class="terminal-section" style="margin-top: 24px;">
+                <h2><i class="fas fa-archive"></i> 2021-2022 研究</h2>
+                
+                <div style="display: grid; gap: 16px;">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">📊</span>
+                            <h3>Data Analytics Infrastructure</h3>
+                        </div>
+                        <p>大規模データ分析基盤の構築と最適化。高性能分散処理の実装研究。</p>
+                        <div class="terminal-text">
+$ git log --oneline --all
+f8a2d91 Final results: 99.2% accuracy achieved
+b3e4c21 Model optimization complete
+a2f1e98 Data pipeline v2 deployed
+5c8d3e2 Initial framework design
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Big Data</span>
+                            <span class="tag-small">Analytics</span>
+                            <span class="tag-small">Distributed Systems</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🌍</span>
+                            <h3>Global Network Research</h3>
+                        </div>
+                        <p>国際的なネットワーク研究プロジェクト。複数大学との共同研究による成果。</p>
+                        <div class="terminal-text">
+Institutions: 5
+Countries: 7
+Researchers: 25+
+Publications: 8
+Funding: $500K
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">International</span>
+                            <span class="tag-small">Collaboration</span>
+                            <span class="tag-small">Networking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publications -->
+            <div class="terminal-section" style="margin-top: 24px;">
+                <h2><i class="fas fa-file-pdf"></i> PUBLICATIONS & CITATIONS</h2>
+                <div class="terminal-text">
+$ citation --count
+Total Citations: 847
+H-Index: 12
+Most Cited: "Network Optimization Methods" (204 citations)
+
+Recent Publications:
+├─ 2024: 4 papers (Tier 1 venues)
+├─ 2023: 5 papers (ACM CCS, IEEE)
+├─ 2022: 3 papers (Top conferences)
+└─ 2021: 2 papers (International collaboration)
+
+Venues:
+IEEE Communications Magazine
+ACM Computing Systems Review
+USENIX Security Symposium
+IETF Standards Track
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="color: #00aa00; margin-bottom: 20px;">» 他のページへ移動</p>
+                <div class="nav-buttons-grid">
+                    <a href="index.html" class="nav-button">
+                        <i class="fas fa-home"></i><br>ホーム
+                    </a>
+                    <a href="projects.html" class="nav-button">
+                        <i class="fas fa-folder-open"></i><br>プロジェクト
+                    </a>
+                    <a href="blog.html" class="nav-button">
+                        <i class="fas fa-pen"></i><br>ブログ
+                    </a>
+                    <a href="contact.html" class="nav-button">
+                        <i class="fas fa-envelope"></i><br>問い合わせ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
             font-size: 1em;
             cursor: pointer;
             margin: 10px 0;

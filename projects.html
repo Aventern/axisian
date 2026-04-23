@@ -3,50 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プロジェクト - 研究所端末</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
-        
-        body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-            margin: 0;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>プロジェクト - MATRIX SYSTEM</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2300ff00'%3E$%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="scan-effect">
+    <header>
+        <div class="logo">
+            <i class="fas fa-terminal"></i> anchovy
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">[ home ]</a></li>
+                <li><a href="#web">[ web ]</a></li>
+                <li><a href="#infra">[ infra ]</a></li>
+                <li><a href="#research">[ research ]</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    <div class="page-header">
+        <h1><i class="fas fa-code-branch"></i> PROJECTS REPOSITORY</h1>
+        <p style="color: #00aa00; margin-top: 8px;">» プロジェクト一覧と詳細</p>
+    </div>
 
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            animation: flicker 0.3s infinite;
-        }
+    <div class="page-content">
+        <div class="container">
+            <!-- Web Projects -->
+            <div id="web" class="terminal-section">
+                <h2><i class="fas fa-globe"></i> WEB DEVELOPMENT</h2>
+                
+                <div class="projects-compact">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🌐</span>
+                            <h3>E-Commerce Platform</h3>
+                        </div>
+                        <p>React + Node.js + PostgreSQL による大規模ECプラットフォーム。リアルタイム決済、在庫管理、分析ダッシュボード搭載。</p>
+                        <div class="terminal-text">
+$ node project-stats
+> Framework: React 18.0, Node.js 18
+> Database: PostgreSQL 14
+> Deployment: AWS ECS, CloudFront CDN
+> Traffic: 100K+ users/month
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">React</span>
+                            <span class="tag-small">Node.js</span>
+                            <span class="tag-small">PostgreSQL</span>
+                            <span class="tag-small">AWS</span>
+                        </div>
+                    </div>
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.95; }
-            100% { opacity: 1; }
-        }
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">📊</span>
+                            <h3>Analytics Dashboard</h3>
+                        </div>
+                        <p>リアルタイムデータ分析とビジュアライゼーション。複数データソースの統合、カスタム レポート生成機能。</p>
+                        <div class="terminal-text">
+$ npm run build
+> Building analytics engine...
+> Integrations: 5+ data sources
+> Real-time updates: WebSocket
+> Charts: D3.js, Chart.js
+> Performance: <100ms query time
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Vue.js</span>
+                            <span class="tag-small">D3.js</span>
+                            <span class="tag-small">WebSocket</span>
+                            <span class="tag-small">InfluxDB</span>
+                        </div>
+                    </div>
 
-        .terminal-text {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            padding: 10px;
-            margin: 10px 0;
-            white-space: pre-line;
-        }
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">💬</span>
+                            <h3>Real-time Chat</h3>
+                        </div>
+                        <p>スケーラブルなリアルタイムメッセージングシステム。エンドツーエンド暗号化、ファイル共有、ビデオ通話統合。</p>
+                        <div class="terminal-text">
+$ pm2 start app.js
+> WebSocket server: CONNECTED
+> Active connections: 50K+
+> Encryption: E2E (AES-256)
+> Uptime: 99.99%
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Socket.io</span>
+                            <span class="tag-small">Express</span>
+                            <span class="tag-small">Redis</span>
+                            <span class="tag-small">WebRTC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
+            <!-- Infrastructure Projects -->
+            <div id="infra" class="terminal-section" style="margin-top: 24px;">
+                <h2><i class="fas fa-server"></i> INFRASTRUCTURE & DEVOPS</h2>
+                
+                <div class="projects-compact">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🚀</span>
+                            <h3>Kubernetes Cluster</h3>
+                        </div>
+                        <p>自動スケーリング、ロードバランシング、セルフヒーリング機能を備えた本番環境Kubernetesクラスタ構築。</p>
+                        <div class="terminal-text">
+$ kubectl cluster-info
+> Cluster: production-us-east-1
+> Nodes: 15 | Pods: 2,847
+> Storage: Persistent Volumes
+> Networking: CNI Calico
+> Monitoring: Prometheus + Grafana
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Kubernetes</span>
+                            <span class="tag-small">Docker</span>
+                            <span class="tag-small">Helm</span>
+                            <span class="tag-small">AWS EKS</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🏗️</span>
+                            <h3>Infrastructure as Code</h3>
+                        </div>
+                        <p>Terraform & Ansible を使用したマルチクラウド インフラストラクチャの自動化。バージョン管理と完全な再現性を実現。</p>
+                        <div class="terminal-text">
+$ terraform plan
+> Resources to create: 127
+> AWS: VPC, EC2, RDS, S3
+> GCP: Compute, Cloud SQL
+> Azure: VMs, Storage
+> State: Remote + Locking
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Terraform</span>
+                            <span class="tag-small">Ansible</span>
+                            <span class="tag-small">Multi-Cloud</span>
+                            <span class="tag-small">GitOps</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🔍</span>
+                            <h3>Monitoring & Logging</h3>
+                        </div>
+                        <p>エンタープライズグレードの監視とロギング。リアルタイムアラート、分散トレーシング、ログ分析機能搭載。</p>
+                        <div class="terminal-text">
+$ curl monitoring.local/api/health
+> Stack: Prometheus + Grafana + ELK
+> Trace: Jaeger
+> Metrics: 50K+ time-series
+> Alert Rules: 300+
+> Retention: 15 days (hot), 1y (archive)
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Prometheus</span>
+                            <span class="tag-small">Grafana</span>
+                            <span class="tag-small">ELK Stack</span>
+                            <span class="tag-small">Jaeger</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Projects -->
+            <div id="research" class="terminal-section" style="margin-top: 24px;">
+                <h2><i class="fas fa-flask"></i> RESEARCH & EXPERIMENTATION</h2>
+                
+                <div class="projects-compact">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🤖</span>
+                            <h3>ML Pipeline</h3>
+                        </div>
+                        <p>機械学習モデルの開発、訓練、デプロイメント。自動ハイパーパラメータチューニング、A/Bテスト統合。</p>
+                        <div class="terminal-text">
+$ python train_model.py
+> Dataset: 1.2M samples
+> Model: XGBoost + Deep Learning
+> Accuracy: 94.7%
+> Inference: 50ms/sample
+> Monitoring: Model Drift Detection
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Python</span>
+                            <span class="tag-small">TensorFlow</span>
+                            <span class="tag-small">XGBoost</span>
+                            <span class="tag-small">MLflow</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🔐</span>
+                            <h3>Security Research</h3>
+                        </div>
+                        <p>脆弱性診断、ペネトレーションテスト、セキュリティアーキテクチャ設計。OWASP準拠の実装。</p>
+                        <div class="terminal-text">
+$ nmap -A target.local
+> CVSS Score: 7.8 (High)
+> Vulnerabilities Found: 12
+> Critical: 3 | High: 5 | Medium: 4
+> Remediation Time: 48h
+> Risk Level: MEDIUM
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Security</span>
+                            <span class="tag-small">Pentesting</span>
+                            <span class="tag-small">Cryptography</span>
+                            <span class="tag-small">OWASP</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">⚡</span>
+                            <h3>Performance Optimization</h3>
+                        </div>
+                        <p>システム最適化とボトルネック分析。キャッシング戦略、データベース最適化、アルゴリズム改善。</p>
+                        <div class="terminal-text">
+$ profiler --analyze
+> Baseline: 2000ms
+> Optimized: 150ms
+> Improvement: 1233%
+> Memory Usage: -45%
+> Cache Hit Rate: 87%
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Optimization</span>
+                            <span class="tag-small">Profiling</span>
+                            <span class="tag-small">Caching</span>
+                            <span class="tag-small">Benchmarking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="color: #00aa00; margin-bottom: 20px;">» 他のページへ移動</p>
+                <div class="nav-buttons-grid">
+                    <a href="index.html" class="nav-button">
+                        <i class="fas fa-home"></i><br>ホーム
+                    </a>
+                    <a href="past_research.html" class="nav-button">
+                        <i class="fas fa-book"></i><br>研究データ
+                    </a>
+                    <a href="blog.html" class="nav-button">
+                        <i class="fas fa-pen"></i><br>ブログ
+                    </a>
+                    <a href="contact.html" class="nav-button">
+                        <i class="fas fa-envelope"></i><br>問い合わせ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
         }
 
         nav a {

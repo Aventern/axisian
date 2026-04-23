@@ -3,50 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>連絡先 - 研究所端末</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
-        
-        body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-            margin: 0;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>お問い合わせ - MATRIX SYSTEM</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2300ff00'%3E$%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="scan-effect">
+    <header>
+        <div class="logo">
+            <i class="fas fa-terminal"></i> anchovy
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">[ home ]</a></li>
+                <li><a href="projects.html">[ projects ]</a></li>
+                <li><a href="blog.html">[ blog ]</a></li>
+                <li><a href="#contact">[ contact ]</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    <div class="page-header">
+        <h1><i class="fas fa-envelope"></i> CONTACT GATEWAY</h1>
+        <p style="color: #00aa00; margin-top: 8px;">» 連絡先情報とお問い合わせ</p>
+    </div>
 
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            animation: flicker 0.3s infinite;
-        }
+    <div class="page-content">
+        <div class="container">
+            <!-- Contact Info -->
+            <div class="terminal-section">
+                <h2><i class="fas fa-address-card"></i> DIRECT COMMUNICATION</h2>
+                
+                <div class="terminal-text" style="text-align: center; font-size: 16px; line-height: 2;">
+$ whoami
+anchovy [at] sfc.wide.ad.jp
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.95; }
-            100% { opacity: 1; }
-        }
+$ uname -a
+Location: Tokyo, Japan
+Status: Available for consultation
 
-        .terminal-text {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            padding: 10px;
-            margin: 10px 0;
-            white-space: pre-line;
-        }
+$ contact --list
+                </div>
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px;">
+                    <a href="mailto:anchovy@sfc.wide.ad.jp" class="terminal-section" style="text-decoration: none; text-align: center; padding: 20px; transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 12px;">✉️</div>
+                        <div style="color: #00ff00; font-weight: 700; margin-bottom: 8px;">Email</div>
+                        <div style="color: #00aa00; font-size: 12px;">anchovy@sfc.wide.ad.jp</div>
+                    </a>
+
+                    <a href="https://github.com/Aventern" target="_blank" class="terminal-section" style="text-decoration: none; text-align: center; padding: 20px; transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 12px;">🐙</div>
+                        <div style="color: #00ff00; font-weight: 700; margin-bottom: 8px;">GitHub</div>
+                        <div style="color: #00aa00; font-size: 12px;">@Aventern</div>
+                    </a>
+
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="terminal-section" style="text-decoration: none; text-align: center; padding: 20px; transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 12px;">💼</div>
+                        <div style="color: #00ff00; font-weight: 700; margin-bottom: 8px;">LinkedIn</div>
+                        <div style="color: #00aa00; font-size: 12px;">Professional Profile</div>
+                    </a>
+
+                    <a href="https://twitter.com/yourusername" target="_blank" class="terminal-section" style="text-decoration: none; text-align: center; padding: 20px; transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 12px;">🐦</div>
+                        <div style="color: #00ff00; font-weight: 700; margin-bottom: 8px;">Twitter</div>
+                        <div style="color: #00aa00; font-size: 12px;">@yourusername</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Contact Form -->
+            <div class="terminal-section" style="margin-top: 24px;">
+                <h2><i class="fas fa-comments"></i> QUICK MESSAGE</h2>
+                
+                <form id="contactForm" style="margin-top: 20px;">
+                    <div style="margin-bottom: 16px;">
+                        <label for="name" style="display: block; color: #00ff00; margin-bottom: 6px; font-weight: 700;">$ name:</label>
+                        <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; background: #000; border: 1px solid #00ff00; color: #00ff00; font-family: 'Share Tech Mono', monospace; border-radius: 4px;">
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label for="email" style="display: block; color: #00ff00; margin-bottom: 6px; font-weight: 700;">$ email:</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; background: #000; border: 1px solid #00ff00; color: #00ff00; font-family: 'Share Tech Mono', monospace; border-radius: 4px;">
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label for="subject" style="display: block; color: #00ff00; margin-bottom: 6px; font-weight: 700;">$ subject:</label>
+                        <input type="text" id="subject" name="subject" required style="width: 100%; padding: 8px; background: #000; border: 1px solid #00ff00; color: #00ff00; font-family: 'Share Tech Mono', monospace; border-radius: 4px;">
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label for="message" style="display: block; color: #00ff00; margin-bottom: 6px; font-weight: 700;">$ message:</label>
+                        <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 8px; background: #000; border: 1px solid #00ff00; color: #00ff00; font-family: 'Share Tech Mono', monospace; border-radius: 4px; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; cursor: pointer;">
+                        <i class="fas fa-paper-plane"></i> SEND_MESSAGE
+                    </button>
+                </form>
+
+                <div id="formMessage" style="display: none; margin-top: 16px; padding: 12px; border-radius: 4px; text-align: center;"></div>
+            </div>
+
+            <!-- Working Hours -->
+            <div class="terminal-section" style="margin-top: 24px;">
+                <h2><i class="fas fa-clock"></i> AVAILABILITY</h2>
+                <div class="terminal-text">
+$ cal 2024
+WORKING HOURS (JST)
+├─ Monday - Friday: 09:00 - 18:00
+├─ Saturday: 10:00 - 16:00
+├─ Sunday: OFF
+└─ Response Time: 24h within working hours
+
+TIMEZONE: JST (UTC+9)
+STATUS: Generally available for consultation
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="color: #00aa00; margin-bottom: 20px;">» 他のページへ移動</p>
+                <div class="nav-buttons-grid">
+                    <a href="index.html" class="nav-button">
+                        <i class="fas fa-home"></i><br>ホーム
+                    </a>
+                    <a href="projects.html" class="nav-button">
+                        <i class="fas fa-folder-open"></i><br>プロジェクト
+                    </a>
+                    <a href="blog.html" class="nav-button">
+                        <i class="fas fa-pen"></i><br>ブログ
+                    </a>
+                    <a href="past_research.html" class="nav-button">
+                        <i class="fas fa-book"></i><br>研究データ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formMessage = document.getElementById('formMessage');
+            
+            // Note: This is a demo. In production, connect to a backend service
+            formMessage.style.display = 'block';
+            formMessage.style.background = 'rgba(0, 255, 0, 0.1)';
+            formMessage.style.border = '1px solid #00ff00';
+            formMessage.style.color = '#00ff00';
+            formMessage.innerHTML = '$ message_status: PROCESSING...<br><br>メッセージが送信されました。ご連絡ありがとうございます！';
+            
+            // Reset form
+            this.reset();
+            
+            // Clear message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
         }
 
         nav a {

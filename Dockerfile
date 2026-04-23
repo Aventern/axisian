@@ -8,6 +8,13 @@ RUN rm -rf ./*
 
 # プロジェクトファイルをコピー
 COPY index.html .
+COPY projects.html .
+COPY blog.html .
+COPY contact.html .
+COPY past_research.html .
+COPY a.html .
+COPY aqua.html .
+COPY cope.html .
 COPY styles.css .
 COPY script.js .
 COPY images/ ./images/

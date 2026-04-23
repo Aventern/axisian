@@ -7,6 +7,13 @@ services:
       - "8080:80"
     volumes:
       - ./index.html:/usr/share/nginx/html/index.html
+      - ./projects.html:/usr/share/nginx/html/projects.html
+      - ./blog.html:/usr/share/nginx/html/blog.html
+      - ./contact.html:/usr/share/nginx/html/contact.html
+      - ./past_research.html:/usr/share/nginx/html/past_research.html
+      - ./a.html:/usr/share/nginx/html/a.html
+      - ./aqua.html:/usr/share/nginx/html/aqua.html
+      - ./cope.html:/usr/share/nginx/html/cope.html
       - ./styles.css:/usr/share/nginx/html/styles.css
       - ./script.js:/usr/share/nginx/html/script.js
       - ./images:/usr/share/nginx/html/images

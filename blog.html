@@ -1,53 +1,207 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>あんちょびのブログ</title>
-    <style>
-        body {font-family: Arial, sans-serif;margin: 0;padding: 0;background-color: #f4f4f4;justify-content: center; align-items: center; /* コンテンツを垂直中央揃え */width: 100vw; /* ビューポートの幅を使用 */}
-
-        header {background-color: #4CAF50;color: white;padding: 10px 0;text-align: center;height: 150px;box-sizing:border-box;position:relative;}
-        #sliding-title {position: absolute;white-space: nowrap;will-change: transform;z-index: 1; /* タイトルを最前面に表示する */}
-        nav {position: absolute;bottom: 0; /* 下に移動 */width: 100%;}
-        nav ul {list-style-type: none;padding: 0;}
-        nav ul li {display: inline;margin-right: 20px;height:-50px;}
-        nav ul li a {color: white;text-decoration: none;}
-        main {padding: 20px;}
-        footer {background-color: #4CAF50;color: white;text-align: center;padding: 10px 0;position: fixed;width: 100%;bottom: 0;}
-        .content {padding: 20px;width: 80%; /* コンテンツの幅を適切に設定 */max-width800px; /* 最大幅を設定 */}
-        .bio {background-color: white;padding: 20px;border-radius: 8px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);}
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>ブログ - MATRIX SYSTEM</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2300ff00'%3E$%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header id="header">
-        <h1 id="sliding-title">あんちょびのブログ</h1>
-         <script>
-        const title = document.getElementById('sliding-title');
-        const startPosition = window.innerWidth;
-        const endPosition = -title.clientWidth;
-        const duration = 10; // アニメーションの持続時間（秒）
-
-        function animate() {
-            const currentTime = (Date.now() % (duration * 1000)) / 1000;
-            const progress = currentTime / duration;
-            const currentX = startPosition + progress * (endPosition - startPosition);
-            title.style.transform = `translateX(${currentX}px)`;
-            requestAnimationFrame(animate);
-        }
-
-        window.onload = () => {
-            animate();
-        };
-    </script>
+<body class="scan-effect">
+    <header>
+        <div class="logo">
+            <i class="fas fa-terminal"></i> anchovy
+        </div>
         <nav>
-            <ul>
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="about.html">研究概要</a></li>
-                <li><a href="Keio.html">お問い合わせ</a></li>
+            <ul class="nav-menu">
+                <li><a href="index.html">[ home ]</a></li>
+                <li><a href="projects.html">[ projects ]</a></li>
+                <li><a href="past_research.html">[ research ]</a></li>
+                <li><a href="#posts">[ posts ]</a></li>
             </ul>
         </nav>
+    </header>
+
+    <div class="page-header">
+        <h1><i class="fas fa-pen-fancy"></i> TECHNICAL BLOG</h1>
+        <p style="color: #00aa00; margin-top: 8px;">» 技術記事とナレッジシェア</p>
+    </div>
+
+    <div class="page-content">
+        <div class="container">
+            <!-- Blog Intro -->
+            <div class="terminal-section">
+                <h2><i class="fas fa-rss"></i> LATEST POSTS</h2>
+                <p style="color: #00aa00; margin-bottom: 20px;">技術的な知見と実装経験をシェアしています。</p>
+
+                <div style="display: grid; gap: 20px;">
+                    <!-- Post 1 -->
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🚀</span>
+                            <h3>Kubernetes本番運用のベストプラクティス</h3>
+                        </div>
+                        <div style="font-size: 12px; color: #00aa00; margin-bottom: 12px;">2024年4月20日 | 読了時間: 8分</div>
+                        <p>大規模Kubernetesクラスタを運用する際に必要な知識とテクニック。本番環境での問題解決やパフォーマンス最適化について、実例を交えて解説します。</p>
+                        <div class="terminal-text" style="font-size: 11px; margin-top: 12px;">
+$ kubectl best-practices
+├─ Resource Limits設定
+├─ Network Policy実装
+├─ Persistent Volume管理
+├─ Security Context設定
+└─ Monitoring & Alerting構築
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Kubernetes</span>
+                            <span class="tag-small">DevOps</span>
+                            <span class="tag-small">Production</span>
+                            <span class="tag-small">Best Practices</span>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🔐</span>
+                            <h3>Webアプリケーションのセキュリティ対策</h3>
+                        </div>
+                        <div style="font-size: 12px; color: #00aa00; margin-bottom: 12px;">2024年4月15日 | 読了時間: 12分</div>
+                        <p>OWASPトップ10の脆弱性に対する実装レベルでの対策方法。SQLインジェクション、XSS、CSRF、認証・認可の実装ポイントを詳細解説。</p>
+                        <div class="terminal-text" style="font-size: 11px; margin-top: 12px;">
+$ security-checklist --analyze
+Critical Issues Fixed:
+✓ SQL Injection Prevention (Parameterized Queries)
+✓ XSS Protection (Content Security Policy)
+✓ CSRF Tokens Implementation
+✓ Authentication (OAuth 2.0, SAML)
+✓ Rate Limiting & DDoS Protection
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Security</span>
+                            <span class="tag-small">OWASP</span>
+                            <span class="tag-small">Web</span>
+                            <span class="tag-small">Best Practices</span>
+                        </div>
+                    </div>
+
+                    <!-- Post 3 -->
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">⚡</span>
+                            <h3>パフォーマンス最適化: 1000倍高速化の戦略</h3>
+                        </div>
+                        <div style="font-size: 12px; color: #00aa00; margin-bottom: 12px;">2024年4月10日 | 読了時間: 15分</div>
+                        <p>実際のプロジェクトで達成した劇的なパフォーマンス改善。アルゴリズムの最適化、キャッシング戦略、データベースチューニングの実装例。</p>
+                        <div class="terminal-text" style="font-size: 11px; margin-top: 12px;">
+$ benchmark --before --after
+Baseline: 2000ms
+├─ Algorithm Optimization: -1500ms
+├─ Database Indexing: -300ms  
+├─ Redis Caching: -150ms
+└─ Final: 50ms (40倍高速化)
+
+Advanced:
+  • Connection Pooling
+  • Query Optimization
+  • Memory Management
+  • CDN Distribution
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Performance</span>
+                            <span class="tag-small">Optimization</span>
+                            <span class="tag-small">Benchmarking</span>
+                        </div>
+                    </div>
+
+                    <!-- Post 4 -->
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">🌐</span>
+                            <h3>分散システム設計パターン</h3>
+                        </div>
+                        <div style="font-size: 12px; color: #00aa00; margin-bottom: 12px;">2024年4月5日 | 読了時間: 10分</div>
+                        <p>スケーラブルな分散システムの設計。CAP定理、一貫性モデル、レプリケーション戦略、障害復旧について実装の観点から解説。</p>
+                        <div class="terminal-text" style="font-size: 11px; margin-top: 12px;">
+Distributed Systems Patterns:
+├─ Service Mesh (Istio, Linkerd)
+├─ Event Sourcing & CQRS
+├─ Saga Pattern (Distributed Transactions)
+├─ Circuit Breaker Pattern
+└─ API Gateway Pattern
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Distributed</span>
+                            <span class="tag-small">Architecture</span>
+                            <span class="tag-small">Patterns</span>
+                        </div>
+                    </div>
+
+                    <!-- Post 5 -->
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon">📚</span>
+                            <h3>Gitワークフロー: チーム開発の実践ガイド</h3>
+                        </div>
+                        <div style="font-size: 12px; color: #00aa00; margin-bottom: 12px;">2024年3月28日 | 読了時間: 7分</div>
+                        <p>チーム開発でのGit運用。ブランチ戦略、コミットメッセージの書き方、プルリクエストのベストプラクティスを実例で紹介。</p>
+                        <div class="terminal-text" style="font-size: 11px; margin-top: 12px;">
+$ git workflow --strategy gitflow
+Branches:
+├─ main: production releases
+├─ develop: integration branch  
+├─ feature/xxx: feature development
+├─ release/x.x: release preparation
+└─ hotfix/xxx: emergency fixes
+
+Commit Convention: Conventional Commits
+Format: type(scope): subject
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag-small">Git</span>
+                            <span class="tag-small">Workflow</span>
+                            <span class="tag-small">TeamDevelopment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscribe Section -->
+            <div class="terminal-section" style="margin-top: 24px; text-align: center;">
+                <h2><i class="fas fa-bell"></i> SUBSCRIBE</h2>
+                <p style="color: #00aa00; margin: 12px 0;">新しい記事を公開したら通知を受け取る</p>
+                <button class="btn" style="margin-top: 12px;">
+                    <i class="fas fa-envelope"></i> RSS購読
+                </button>
+                <button class="btn" style="margin-top: 12px; margin-left: 12px;">
+                    <i class="fas fa-bell"></i> 通知設定
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="color: #00aa00; margin-bottom: 20px;">» 他のページへ移動</p>
+                <div class="nav-buttons-grid">
+                    <a href="index.html" class="nav-button">
+                        <i class="fas fa-home"></i><br>ホーム
+                    </a>
+                    <a href="projects.html" class="nav-button">
+                        <i class="fas fa-folder-open"></i><br>プロジェクト
+                    </a>
+                    <a href="past_research.html" class="nav-button">
+                        <i class="fas fa-book"></i><br>研究データ
+                    </a>
+                    <a href="contact.html" class="nav-button">
+                        <i class="fas fa-envelope"></i><br>問い合わせ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
     </header>
      <script>
         // function to generate a random color

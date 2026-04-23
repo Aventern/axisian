@@ -3,146 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="あんちょびの研究や最近の出来事を掲載したホームページです。">
-<meta property="og:title" content="あんちょび研究所">
-   <meta property="og:site_name" content="トップ">
-   <meta property="og:description" content="あんちょびの研究や最近の出来事を掲載したホームページです。">
-   <meta property="og:url" content="https://aventern.github.io/axisian/">
-   <meta property="og:image" herf="images/anchovy.jpg">
-<link rel="icon" href="images/anchovy.jpg">
-    <title>研究所端末</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Share+Tech+Mono&display=swap');
-        
-        body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            animation: flicker 0.3s infinite;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.95; }
-            100% { opacity: 1; }
-        }
-
-        .terminal-text {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            padding: 10px;
-            margin: 10px 0;
-            white-space: pre-line;
-        }
-
-        button {
-            background-color: #00ff00;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            font-family: 'Share Tech Mono', 'Noto Sans JP', monospace;
-            font-size: 1em;
-            cursor: pointer;
-            margin: 10px 0;
-        }
-
-        button:hover {
-            background-color: #00cc00;
-        }
-
-        a {
-            color: #00ff00;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>コーピング - MATRIX SYSTEM</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2300ff00'%3E$%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>あんちょび研究所</h1>
-         <header>
-        <nav>
-            <ul style="list-style: none; padding: 0; display: flex; justify-content: space-around;">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="past_research.html">RESEARCH</a></li>
-                <li><a href="projects.html">PROJECTS</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
+<body class="scan-effect">
+    <header>
+        <div class="logo"><i class="fas fa-terminal"></i> anchovy</div>
+        <nav><ul class="nav-menu">
+            <li><a href="index.html">[ home ]</a></li>
+            <li><a href="projects.html">[ projects ]</a></li>
+            <li><a href="contact.html">[ contact ]</a></li>
+        </ul></nav>
     </header>
-
-        
-        <div class="terminal-text">
-            システム状態: アクティブ
-            接続状態: 確立
-        </div>
-
-        <h2>現在の研究プロジェクト</h2>
-        <div class="terminal-text">
-            プロジェクト_WIP: 進行中 [██████████] 100%
-            プロジェクト_TERM: 分析中 [███████___] 70%
-           プロジェクト_TRANSFER: 初期化中 [██________] 20%
-        </div>
-
-        <h2>過去の研究プロジェクト</h2>
-        <button onclick="window.location.href='past_research.html'">過去の研究データを表示</button>
-
-        <h2>研究報告書</h2>
-        <ul>
-            <li><a href="reports/project_alpha.pdf" target="_blank">プロジェクト_pk-lock 報告書</a></li>
-            <li><a href="reports/project_beta.pdf" target="_blank">プロジェクト_wip 中間報告書</a></li>
-        </ul>
-
-        <div class="terminal-text">
-            注意: すべての研究データは最高機密です。
-            許可されていない閲覧や共有は厳重に禁止されています。
-        </div>
+    <div class="page-header">
+        <h1><i class="fas fa-heart"></i> COPING STRATEGIES</h1>
+        <p style="color: #00aa00; margin-top: 8px;">» メンタルヘルスと自己ケア</p>
     </div>
-
-    <script>
-        // ターミナル風のテキスト表示エフェクト
-        function typeWriter(elementId, text, speed) {
-            let i = 0;
-            const element = document.getElementById(elementId);
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // ページ読み込み時にエフェクトを適用
-        window.onload = function() {
-            const terminalTexts = document.querySelectorAll('.terminal-text');
-            terminalTexts.forEach((element, index) => {
-                const text = element.innerHTML;
-                element.innerHTML = '';
-                element.id = 'terminal-text-' + index;
-                setTimeout(() => typeWriter('terminal-text-' + index, text, 20), index * 1000);
-            });
-        };
-    </script>
+    <div class="page-content"><div class="container">
+        <div class="terminal-section">
+            <h2><i class="fas fa-brain"></i> メンタルウェルネス</h2>
+            <div class="terminal-text">
+$ health --status
+Mental Health: IMPORTANT
+Physical Exercise: RECOMMENDED
+Sleep Quality: ESSENTIAL
+Work-Life Balance: CRITICAL
+            </div>
+            <p style="color: #00aa00; margin-top: 12px;">技術者の皆様へ: 定期的な休息と運動を心がけてください。</p>
+        </div>
+        <div class="terminal-section" style="margin-top: 24px;">
+            <h2><i class="fas fa-seedling"></i> リソース</h2>
+            <div class="project-item">
+                <h3>心身のバランス</h3>
+                <p style="color: #00aa00;">健全な心と体の維持は、高度なパフォーマンスの基盤です。</p>
+            </div>
+            <div class="project-item" style="margin-top: 12px;">
+                <h3>コミュニティ</h3>
+                <p style="color: #00aa00;">同じ道を歩む人々との連携と交流を大切にしてください。</p>
+            </div>
+        </div>
+        <div class="nav-buttons-grid" style="margin-top: 40px;">
+            <a href="index.html" class="nav-button"><i class="fas fa-home"></i><br>ホーム</a>
+            <a href="contact.html" class="nav-button"><i class="fas fa-envelope"></i><br>問い合わせ</a>
+        </div>
+    </div></div>
+    <script src="script.js"></script>
 </body>
 </html>
-
