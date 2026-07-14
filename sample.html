@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>推し紹介サイト</title>
+
+<!-- AOS: Animate On Scroll -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<!-- Swiper: カルーセル -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500&family=Josefin+Sans:wght@100;300;400&display=swap" rel="stylesheet">
+<!-- Splitting.js: テキストアニメ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/splitting/1.0.6/splitting.css">
+
+<style>
+  /* ============================================================
+     CSS Variables & Reset
+  ============================================================ */
+  :root {
+    --ink:        #1a1410;
+    --paper:      #f8f4ee;
+    --cream:      #f0e8d8;
+    --accent:     #c8956c;
+    --accent-dim: #b07a52;
+    --gold:       #d4a84b;
+    --blush:      #e8c4b4;
+    --fog:        #e4ddd4;
+    --shadow:     rgba(26,20,16,.12);
+
+    --ff-display: 'Cormorant Garamond', serif;
+    --ff-body:    'Noto Serif JP', serif;
+    --ff-label:   'Josefin Sans', sans-serif;
+
+    --ease-out-expo: cubic-bezier(.16,1,.3,1);
+    --ease-in-out-quart: cubic-bezier(.76,0,.24,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--ff-body);
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============================================================
+     Custom Cursor
+  ============================================================ */
+  #cursor-dot, #cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: opacity .3s;
+  }
+  #cursor-dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+  }
+  #cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--accent);
+    transition: transform .15s var(--ease-out-expo), width .3s, height .3s, background .3s;
+  }
+  body:has(a:hover) #cursor-ring,
+  body:has(button:hover) #cursor-ring {
+    width: 56px; height: 56px;
+    background: rgba(200,149,108,.1);
+  }
+
+  /* ============================================================
+     Noise Texture overlay
+  ============================================================ */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 8888;
+    opacity: .5;
+  }
+
+  /* ============================================================
+     Scroll Progress Bar
+  ============================================================ */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--accent));
+    z-index: 9000;
+    transition: width .1s linear;
+  }
+
+  /* ============================================================
+     Navigation
+  ============================================================ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 800;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    mix-blend-mode: multiply;
+    transition: background .4s, padding .4s;
+  }
+  nav.scrolled {
+    background: rgba(248,244,238,.92);
+    backdrop-filter: blur(12px);
+    padding: 1rem 3rem;
+    box-shadow: 0 1px 0 var(--fog);
+    mix-blend-mode: normal;
+  }
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: .15em;
+    color: var(--ink);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--ff-label);
+    font-size: .75rem;
+    font-weight: 300;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width .4s var(--ease-out-expo);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ============================================================
+     Hero Section
+  ============================================================ */
+  #hero {
+    position: relative;
+    height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-image-panel {
+    position: relative;
+    overflow: hidden;
+  }
+  /* ★ 画像差し替えここ: src属性を変更してください */
+  .hero-image-panel img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+    animation: heroImgReveal 1.8s var(--ease-out-expo) forwards;
+  }
+  @keyframes heroImgReveal {
+    from { transform: scale(1.15); }
+    to   { transform: scale(1.0); }
+  }
+  .hero-image-panel::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(248,244,238,.3));
+    pointer-events: none;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 5rem 5rem 4rem;
+    position: relative;
+    background: var(--paper);
+  }
+  .hero-content::before {
+    content: '';
+    position: absolute;
+    top: 15%; right: -2px;
+    width: 1px; height: 40%;
+    background: linear-gradient(180deg, transparent, var(--accent), transparent);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--ff-label);
+    font-size: .7rem;
+    font-weight: 300;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp .8s .4s var(--ease-out-expo) forwards;
+  }
+
+  .hero-name {
+    font-family: var(--ff-display);
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300;
+    line-height: .95;
+    letter-spacing: -.01em;
+    margin-bottom: .5rem;
+    overflow: hidden;
+  }
+  .hero-name .line {
+    display: block;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: lineReveal .9s var(--ease-out-expo) forwards;
+  }
+  .hero-name .line:nth-child(1) { animation-delay: .55s; }
+  .hero-name .line:nth-child(2) { animation-delay: .7s; font-style: italic; color: var(--accent-dim); }
+
+  .hero-name-en {
+    font-family: var(--ff-label);
+    font-size: clamp(.8rem, 1.2vw, 1rem);
+    font-weight: 100;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp .8s .9s var(--ease-out-expo) forwards;
+  }
+
+  .hero-tagline {
+    font-size: clamp(.9rem, 1.1vw, 1.05rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: #5a4e44;
+    max-width: 30ch;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp .8s 1.05s var(--ease-out-expo) forwards;
+  }
+
+  .hero-scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--ff-label);
+    font-size: .65rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #aaa;
+    opacity: 0;
+    animation: fadeUp .8s 1.3s var(--ease-out-expo) forwards;
+  }
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--paper);
+    animation: scrollLineAnim 2s 1.5s var(--ease-in-out-quart) infinite;
+  }
+  @keyframes scrollLineAnim {
+    0%   { transform: translateX(-100%); }
+    50%  { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+  }
+
+  .hero-number {
+    position: absolute;
+    top: 2.5rem; right: 4rem;
+    font-family: var(--ff-display);
+    font-size: 8rem;
+    font-weight: 300;
+    color: rgba(200,149,108,.07);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lineReveal {
+    from { opacity: 0; transform: translateY(60px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============================================================
+     About Section
+  ============================================================ */
+  #about {
+    padding: 10rem 0;
+    position: relative;
+  }
+  #about::before {
+    content: 'PROFILE';
+    position: absolute;
+    top: 6rem; left: -1rem;
+    font-family: var(--ff-label);
+    font-size: 8rem;
+    font-weight: 100;
+    letter-spacing: .3em;
+    color: rgba(200,149,108,.05);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .about-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-image-frame {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+  }
+  /* ★ 画像差し替えここ */
+  .about-image-frame img {
+    transition: transform .8s var(--ease-out-expo);
+  }
+  .about-image-frame:hover img { transform: scale(1.04); }
+  .about-image-frame::before {
+    content: '';
+    position: absolute;
+    inset: -1.5rem 1.5rem 1.5rem -1.5rem;
+    border: 1px solid var(--accent);
+    opacity: .35;
+    z-index: -1;
+  }
+
+  .about-label {
+    font-family: var(--ff-label);
+    font-size: .7rem;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-heading {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+  .about-heading em {
+    font-style: italic;
+    color: var(--accent-dim);
+  }
+
+  .about-text {
+    font-size: .95rem;
+    line-height: 2.1;
+    color: #5a4e44;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--fog);
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: var(--ff-display);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: .4rem;
+  }
+  .stat-label {
+    font-family: var(--ff-label);
+    font-size: .65rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  /* ============================================================
+     Gallery Section (Swiper)
+  ============================================================ */
+  #gallery {
+    padding: 8rem 0;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  #gallery::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+  }
+  .section-label {
+    font-family: var(--ff-label);
+    font-size: .7rem;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  .section-title em { font-style: italic; color: var(--accent-dim); }
+
+  .swiper {
+    padding: 2rem 4rem 5rem !important;
+    overflow: visible !important;
+  }
+  .swiper-slide {
+    width: 340px;
+    height: 460px;
+    overflow: hidden;
+    position: relative;
+  }
+  /* ★ 画像差し替えここ: 各スライドの img */
+  .swiper-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--ease-out-expo);
+  }
+  .swiper-slide:hover img { transform: scale(1.05); }
+  .slide-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(0deg, rgba(26,20,16,.7) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity .4s;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+  }
+  .swiper-slide:hover .slide-overlay { opacity: 1; }
+  .slide-caption {
+    font-family: var(--ff-display);
+    font-size: 1.1rem;
+    color: var(--paper);
+    font-style: italic;
+  }
+
+  .swiper-pagination { bottom: 1.5rem !important; }
+  .swiper-pagination-bullet {
+    background: var(--accent) !important;
+    opacity: .3 !important;
+  }
+  .swiper-pagination-bullet-active { opacity: 1 !important; }
+
+  /* ============================================================
+     Timeline / Story Section
+  ============================================================ */
+  #story {
+    padding: 10rem 0;
+    position: relative;
+  }
+
+  .story-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .timeline {
+    position: relative;
+    margin-top: 5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--accent) 10%, var(--accent) 90%, transparent);
+    transform: translateX(-50%);
+    opacity: .4;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+    align-items: start;
+  }
+  .timeline-item:nth-child(odd) .tl-date { text-align: right; }
+  .timeline-item:nth-child(even) { direction: rtl; }
+  .timeline-item:nth-child(even) > * { direction: ltr; }
+
+  .tl-date {
+    font-family: var(--ff-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(200,149,108,.3);
+    line-height: 1;
+    padding-top: .2rem;
+  }
+  .tl-content {
+    position: relative;
+  }
+  .tl-content::before {
+    content: '';
+    position: absolute;
+    top: .6rem;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--accent);
+  }
+  .timeline-item:nth-child(odd) .tl-content::before { left: -4.55rem; }
+  .timeline-item:nth-child(even) .tl-content::before { right: -4.55rem; left: auto; }
+
+  .tl-tag {
+    font-family: var(--ff-label);
+    font-size: .65rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .6rem;
+  }
+  .tl-title {
+    font-family: var(--ff-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: .8rem;
+    line-height: 1.3;
+  }
+  .tl-text {
+    font-size: .88rem;
+    line-height: 2;
+    color: #5a4e44;
+  }
+
+  /* ============================================================
+     Charms / Tags Section
+  ============================================================ */
+  #charms {
+    padding: 8rem 0;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #charms::before {
+    content: '♡';
+    position: absolute;
+    top: -2rem; left: 50%;
+    transform: translateX(-50%);
+    font-size: 18rem;
+    color: rgba(200,149,108,.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #charms .section-label { color: var(--accent); }
+  #charms .section-title { color: var(--paper); }
+  #charms .section-title em { color: var(--blush); }
+
+  .tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 3.5rem auto 0;
+    padding: 0 2rem;
+  }
+  .tag {
+    font-family: var(--ff-label);
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: .7rem 1.8rem;
+    border: 1px solid rgba(200,149,108,.35);
+    color: var(--blush);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: color .35s, border-color .35s;
+  }
+  .tag::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--accent);
+    transform: translateX(-101%);
+    transition: transform .45s var(--ease-out-expo);
+    z-index: 0;
+  }
+  .tag:hover { color: var(--ink); border-color: var(--accent); }
+  .tag:hover::before { transform: translateX(0); }
+  .tag span { position: relative; z-index: 1; }
+
+  /* ============================================================
+     Message Section
+  ============================================================ */
+  #message {
+    padding: 10rem 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .message-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .message-quote {
+    font-family: var(--ff-display);
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--ink);
+    position: relative;
+  }
+  .message-quote::before,
+  .message-quote::after {
+    font-family: var(--ff-display);
+    font-size: 6rem;
+    line-height: 0;
+    color: var(--accent);
+    opacity: .3;
+    vertical-align: middle;
+  }
+  .message-quote::before { content: '\201C'; margin-right: .2rem; }
+  .message-quote::after  { content: '\201D'; margin-left: .2rem; }
+
+  .message-author {
+    margin-top: 2.5rem;
+    font-family: var(--ff-label);
+    font-size: .7rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .decorative-line {
+    width: 60px; height: 1px;
+    background: var(--accent);
+    margin: 2rem auto;
+    opacity: .5;
+  }
+
+  /* ============================================================
+     Footer
+  ============================================================ */
+  footer {
+    padding: 3rem 4rem;
+    background: var(--cream);
+    border-top: 1px solid var(--fog);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: var(--ff-display);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: .1em;
+  }
+  .footer-copy {
+    font-family: var(--ff-label);
+    font-size: .65rem;
+    letter-spacing: .2em;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     Lightbox (vanilla)
+  ============================================================ */
+  #lightbox {
+    position: fixed; inset: 0;
+    background: rgba(26,20,16,.92);
+    z-index: 9500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s;
+    backdrop-filter: blur(8px);
+  }
+  #lightbox.open { opacity: 1; pointer-events: all; }
+  #lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    box-shadow: 0 40px 120px rgba(0,0,0,.5);
+    transform: scale(.92);
+    transition: transform .5s var(--ease-out-expo);
+  }
+  #lightbox.open img { transform: scale(1); }
+  #lb-close {
+    position: absolute; top: 2rem; right: 2.5rem;
+    font-family: var(--ff-label);
+    font-size: .7rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: rgba(248,244,238,.6);
+    cursor: pointer;
+    transition: color .3s;
+  }
+  #lb-close:hover { color: var(--accent); }
+
+  /* ============================================================
+     Scroll-triggered floating label
+  ============================================================ */
+  .float-section-id {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-family: var(--ff-label);
+    font-size: .6rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: rgba(200,149,108,.5);
+    pointer-events: none;
+    z-index: 700;
+    transition: opacity .4s;
+  }
+
+  /* ============================================================
+     Responsive
+  ============================================================ */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: .9rem 1.5rem; }
+    .nav-links { display: none; }
+
+    #hero { grid-template-columns: 1fr; }
+    .hero-image-panel { height: 55vh; }
+    .hero-content { padding: 3rem 2rem 4rem; }
+    .hero-number { display: none; }
+
+    .about-grid { grid-template-columns: 1fr; padding: 0 2rem; }
+    .timeline::before { left: 1.5rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 1rem; direction: ltr; }
+    .timeline-item:nth-child(even) { direction: ltr; }
+    .tl-date { font-size: 2rem; text-align: left !important; }
+    .tl-content::before { left: -2.9rem !important; right: auto !important; }
+    .story-inner { padding: 0 2rem 0 3.5rem; }
+
+    .swiper { padding: 2rem 1.5rem 4rem !important; }
+
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Scroll Progress -->
+<div id="progress-bar"></div>
+
+<!-- Floating Section Indicator -->
+<div class="float-section-id" id="float-label">HERO</div>
+
+<!-- ============================================================
+     Navigation
+============================================================ -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <!-- ★ サイト名を変更 -->
+    広末涼子最先端攻略TV
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Profile</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#charms">Charms</a></li>
+    <li><a href="#message">Message</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     Hero
+============================================================ -->
+<section id="hero">
+  <div class="hero-image-panel">
+    <!-- ★ メインビジュアル差し替え: src を変更 -->
+    <img src="photo_hero.jpg" alt="推しメインビジュアル" loading="eager"
+        onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/5f/Ryoko_Hirosue_at_Kochi_Yosakoi_Matsuri_1_crop2.jpg'">
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-number">01</div>
+    <!-- ★ キャッチフレーズ -->
+    <p class="hero-eyebrow">My Favorite Person</p>
+    <h1 class="hero-name">
+      <!-- ★ 推しの名前（日本語） -->
+      <span class="line">推しの</span>
+      <span class="line">広末涼子</span>
+    </h1>
+    <!-- ★ 推しの名前（ローマ字） -->
+    <p class="hero-name-en">Hirosue Ryoko</p>
+    <!-- ★ キャッチコピー -->
+    <p class="hero-tagline">世界で一番とち狂った女優。<br>見るたびに、また好きになる。</p>
+    <div class="hero-scroll-hint">
+      <span class="scroll-line"></span>
+      Scroll to Discover
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     About / Profile
+============================================================ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap" data-aos="fade-right" data-aos-duration="1000">
+      <div class="about-image-frame">
+        <!-- ★ プロフィール写真差し替え -->
+        <img src="photo_profile.jpg" alt="プロフィール写真"
+                  onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/5b/Ryoko_Hirosue_at_Kochi_Yosakoi_Matsuri_1.jpg'">
+      </div>
+    </div>
+
+    <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
+      <p class="about-label">Profile</p>
+      <!-- ★ 見出し -->
+      <h2 class="about-heading">誰より<em>輝いている</em>、<br>その笑顔が好き。</h2>
+      <!-- ★ 紹介文（複数段落OK） -->
+      <p class="about-text">
+        185kmで静岡県の高速道路を爆速し、無事に事故る。
+        その後無傷で生還。
+        搬送先の病院で看護師に暴行し、取り押さえられる。
+        傷害致死罪、及び道路交通法違反。
+      </p>
+      <p class="about-text">
+        代表作：MajiでKoiする5秒前
+      </p>
+
+      <!-- ★ 数字系データ3つ -->
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-count="3">0</span>
+          <span class="stat-label">Years Fan</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="0">0</span>
+          <span class="stat-label">Live Count</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="5">0</span>
+          <span class="stat-label">Fav Songs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Gallery
+============================================================ -->
+<section id="gallery" data-aos="fade-up" data-aos-duration="800">
+  <div class="section-header">
+    <span class="section-label">Gallery</span>
+    <h2 class="section-title">忘れられない<em>瞬間たち</em></h2>
+  </div>
+
+  <div class="swiper js-gallery-swiper">
+    <div class="swiper-wrapper">
+      <!-- ★ 各スライド: src と caption を変更。スライド数も自由に増減 -->
+      <div class="swiper-slide">
+        <img src="photo_gallery_1.jpg" alt="ギャラリー1"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/5f/Ryoko_Hirosue_at_Kochi_Yosakoi_Matsuri_1_crop2.jpg'">
+        <div class="slide-overlay"><p class="slide-caption">最初のライブ</p></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="photo_gallery_2.jpg" alt="ギャラリー2"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/7/72/Ryoko_Hirosue_at_Kochi_Yosakoi_Matsuri_1_cropped.jpg'">
+        <div class="slide-overlay"><p class="slide-caption">あの笑顔</p></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="photo_gallery_3.jpg" alt="ギャラリー3"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/5b/Ryoko_Hirosue_at_Kochi_Yosakoi_Matsuri_1.jpg'">
+        <div class="slide-overlay"><p class="slide-caption">ステージの上</p></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="photo_gallery_4.jpg" alt="ギャラリー4"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/0d/Hirosue_Ryoko_from_%222_Women%22_at_Red_Carpet_of_the_Tokyo_International_Film_Festival_2022_%2852460524537%29.jpg'">
+        <div class="slide-overlay"><p class="slide-caption">あの夏の日</p></div>
+      </div>
+      <div class="swiper-slide">
+        <img src="photo_gallery_5.jpg" alt="ギャラリー5"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/7/7b/Hirosue_Ryoko_from_%222_Women%22_at_Red_Carpet_of_the_Tokyo_International_Film_Festival_2022_%2852461307489%29.jpg'">
+        <div class="slide-overlay"><p class="slide-caption">笑顔が最高</p></div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Story / Timeline
+============================================================ -->
+<section id="story">
+  <div class="story-inner">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">Story</span>
+      <h2 class="section-title">ここまでの<em>軌跡</em></h2>
+    </div>
+
+    <div class="timeline">
+      <!-- ★ タイムラインアイテムを増減・編集 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+        <div class="tl-date">1995</div>
+        <div class="tl-content">
+          <p class="tl-tag">Television Debut</p>
+          <h3 class="tl-title">ドラマでデビュー</h3>
+          <p class="tl-text">フジテレビの『ハートにS』でテレビデビュー。翌年以降は『将太の寿司』や『ロングバケーション』などで注目を集めました。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="tl-date">1997</div>
+        <div class="tl-content">
+          <p class="tl-tag">Film Debut</p>
+          <h3 class="tl-title">映画初主演で一気に躍進</h3>
+          <p class="tl-text">『20世紀ノスタルジア』で映画初主演。新人賞を総なめにし、同年の『大スキ!』や『MajiでKoiする5秒前』でも人気を広げました。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+        <div class="tl-date">2008</div>
+        <div class="tl-content">
+          <p class="tl-tag">Milestone</p>
+          <h3 class="tl-title">『おくりびと』で世界的な評価</h3>
+          <p class="tl-text">『おくりびと』でヒロインを務め、作品はアカデミー賞外国語映画賞を受賞。広末涼子の演技が国際的に知られる転機になりました。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="tl-date">2026</div>
+        <div class="tl-content">
+          <p class="tl-tag">Present</p>
+          <h3 class="tl-title">活動再開、そしてこれから</h3>
+          <p class="tl-text">2024年に独立し、2026年には活動再開を発表。今もなお、作品ごとに新しい表情を見せています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Charms / Tags
+============================================================ -->
+<section id="charms" data-aos="fade-up">
+  <div class="section-header">
+    <span class="section-label">Why I Love</span>
+    <h2 class="section-title">好きな<em>ところ</em></h2>
+  </div>
+
+  <!-- ★ タグを自由に追加・削除・変更 -->
+  <div class="tags-wrap">
+    <div class="tag"><span>笑顔が最高</span></div>
+    <div class="tag"><span>歌声がきれい</span></div>
+    <div class="tag"><span>ダンスが上手い</span></div>
+    <div class="tag"><span>ファンへの気遣い</span></div>
+    <div class="tag"><span>努力家</span></div>
+    <div class="tag"><span>185km</span></div>
+    <div class="tag"><span>ちょっとした仕草</span></div>
+    <div class="tag"><span>素直な性格</span></div>
+    <div class="tag"><span>いつも全力</span></div>
+    <div class="tag"><span>不倫</span></div>
+    <div class="tag"><span>優しそうなところ</span></div>
+    <div class="tag"><span>メンバーへの愛</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Message
+============================================================ -->
+<section id="message" data-aos="fade-up">
+  <div class="message-inner">
+    <span class="section-label">Message</span>
+    <div class="decorative-line"></div>
+    <!-- ★ 推しへのメッセージ -->
+    <p class="message-quote">
+      あなたの存在が、毎日の原動力です。これからも変わらず応援しています。
+    </p>
+    <div class="decorative-line"></div>
+    <!-- ★ 署名 -->
+    <p class="message-author">From Your Fan &mdash; Forever</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     Footer
+============================================================ -->
+<footer>
+  <!-- ★ サイト名 -->
+  <div class="footer-logo">推し紹介サイト</div>
+  <!-- ★ コピーライト等 -->
+  <p class="footer-copy">&copy; 2025 &nbsp;Made with ♡ by a Fan</p>
+</footer>
+
+<!-- ============================================================
+     Lightbox
+============================================================ -->
+<div id="lightbox">
+  <span id="lb-close">CLOSE ✕</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<!-- ============================================================
+     Scripts (CDN)
+============================================================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/splitting/1.0.6/splitting.min.js"></script>
+<script>
+/* ── AOS ── */
+AOS.init({ once: true, offset: 80, duration: 900, easing: 'ease-out-quart' });
+
+/* ── Swiper ── */
+new Swiper('.js-gallery-swiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 24,
+  centeredSlides: true,
+  loop: true,
+  autoplay: { delay: 3200, disableOnInteraction: false, pauseOnMouseEnter: true },
+  pagination: { el: '.swiper-pagination', clickable: true },
+  grabCursor: true,
+  speed: 700,
+  effect: 'slide',
+});
+
+/* ── Custom Cursor ── */
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+  rx += (mx - rx) * .18;
+  ry += (my - ry) * .18;
+  dot.style.left  = mx + 'px';
+  dot.style.top   = my + 'px';
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animCursor);
+})();
+
+/* ── Nav scroll ── */
+const nav = document.getElementById('main-nav');
+const progressBar = document.getElementById('progress-bar');
+const floatLabel  = document.getElementById('float-label');
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const max = document.body.scrollHeight - window.innerHeight;
+  progressBar.style.width = (y / max * 100) + '%';
+  nav.classList.toggle('scrolled', y > 60);
+
+  // floating label update
+  for (const sec of sections) {
+    if (y >= sec.offsetTop - 200) {
+      floatLabel.textContent = sec.id.toUpperCase();
+    }
+  }
+});
+
+/* ── CountUp on scroll ── */
+const counters = document.querySelectorAll('[data-count]');
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el  = e.target;
+    const end = parseInt(el.dataset.count);
+    let start = 0;
+    const dur = 1200;
+    const step = end / (dur / 16);
+    const tick = () => {
+      start = Math.min(start + step, end);
+      el.textContent = Math.floor(start);
+      if (start < end) requestAnimationFrame(tick);
+    };
+    tick();
+    countObs.unobserve(el);
+  });
+}, { threshold: .5 });
+counters.forEach(c => countObs.observe(c));
+
+/* ── Lightbox ── */
+const lb     = document.getElementById('lightbox');
+const lbImg  = document.getElementById('lb-img');
+const lbClose= document.getElementById('lb-close');
+
+document.querySelectorAll('.swiper-slide img').forEach(img => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => {
+    lbImg.src = img.src;
+    lb.classList.add('open');
+  });
+});
+lbClose.addEventListener('click', () => lb.classList.remove('open'));
+lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+/* ── Parallax (hero image) ── */
+const heroPanel = document.querySelector('.hero-image-panel img');
+if (heroPanel) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    heroPanel.style.transform = `scale(1) translateY(${y * 0.25}px)`;
+  }, { passive: true });
+}
+
+/* ── Tag hover ripple ── */
+document.querySelectorAll('.tag').forEach(tag => {
+  tag.addEventListener('mouseleave', () => {
+    tag.style.transition = 'color .35s, border-color .35s';
+  });
+});
+</script>
+</body>
+</html>
