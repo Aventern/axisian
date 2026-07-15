@@ -566,7 +566,7 @@ footer{padding:2rem;border-top:1px solid var(--border);background:var(--bg-raise
         <span class="section-label">About</span>
         <h2 class="section-title" style="margin-bottom:1.5rem">システムを<br>外から測る。</h2>
         <p class="about-desc">
-          薬学系私大から慶應経済（ゲーム理論・ブロックチェーン）を経てSFCへという異色の経歴を持つ。現在はSREインターンとして EKS/Terraform によるマイクロサービス移行を担当しつつ、KVM 仮想化環境における CPU オーバーコミット・steal time・NUMA トポロジ分析を実務経験として積んでいる。
+          現在はSREインターンとして EKS/Terraform によるマイクロサービス移行を担当しつつ、分散MoE推論における通信帯域を考慮したExperts動的ルーティング制御の解析を経験として積んでいる。
         </p>
         <p class="about-desc">
           長期目標は数千万から数億ユーザー規模のシステムを設計・運用するアーキテクト・SRE職。HPC・科学計算ワークロードの外部計測にも関心があり、JAEA の夏季実習（8月）でサイバーセキュリティ・HPC トラックに参加予定。
@@ -639,20 +639,23 @@ footer{padding:2rem;border-top:1px solid var(--border);background:var(--bg-raise
     <div class="exp-list">
       <div class="exp-item" data-aos="fade-up">
         <div class="exp-meta">
-          <p class="exp-period">2024</p>
-          <p class="exp-company">CyberAgent</p>
+          <p class="exp-period">2026</p>
+          <p class="exp-company">Meltly株式会社</p>
+          <p class="exp-desc">SRE・インフラエンジニアとして勤務中</p>
           <span class="exp-badge">継続中</span>
         </div>
         <div class="exp-content">
-          <h3 class="exp-role">CIU 仮想マシンインターン / アーキテクチャチャレンジ合格</h3>
+          <p class="exp-period">2026</p>
+          <h3 class="exp-role">CyberAgent CIU 仮想マシンインターン / アーキテクチャチャレンジ合格</h3>
           <p class="exp-desc">17名参加の2日間インターンで KVM 仮想化環境の CPU オーバーコミット・steal time 解析・NUMA トポロジ分析を担当。20名参加のアーキテクチャチャレンジを通過し、メンター着任・採用担当と継続面談中。</p>
           <div class="exp-techs"><span class="exp-tech">KVM</span><span class="exp-tech">NUMA</span><span class="exp-tech">steal time</span><span class="exp-tech">Linux</span><span class="exp-tech">cgroups</span></div>
         </div>
       </div>
       <div class="exp-item" data-aos="fade-up">
         <div class="exp-meta">
-          <p class="exp-period">2024</p>
+          <p class="exp-period">2025.11</p>
           <p class="exp-company">Tagbangers</p>
+          <p class="exp-desc">SREとして勤務</p>
           <span class="exp-badge">完了</span>
         </div>
         <div class="exp-content">
@@ -663,8 +666,8 @@ footer{padding:2rem;border-top:1px solid var(--border);background:var(--bg-raise
       </div>
       <div class="exp-item" data-aos="fade-up">
         <div class="exp-meta">
-          <p class="exp-period">2025.08</p>
-          <p class="exp-company">JAEA</p>
+          <p class="exp-period">2026.08</p>
+          <p class="exp-company">JAEA(日本原子力研究開発機構)・夏期休暇実習生</p>
           <span class="exp-badge">採択済み</span>
         </div>
         <div class="exp-content">
@@ -703,7 +706,7 @@ footer{padding:2rem;border-top:1px solid var(--border);background:var(--bg-raise
         <div class="project-body">
           <p class="project-category">Systems Research</p>
           <h3 class="project-title">Virtual Rank / Rank Virtualization</h3>
-          <p class="project-desc">分散学習において NCCL の LD_PRELOAD ラッパーで論理ランクと物理 GPU を分離するアーキテクチャを構想。OSS 実装・AllReduce 境界の安全性定義・定量評価で先行研究（Singularity 等）と差別化。</p>
+          <p class="project-desc">分散学習において NCCL の LD_PRELOAD ラッパーで論理ランクと物理 GPU を分離するアーキテクチャを構想。AllReduce 境界の安全性定義・定量評価で先行研究（Singularity 等）と差別化しようと模索中。</p>
           <div class="project-techs"><span class="project-tech">NCCL</span><span class="project-tech">LD_PRELOAD</span><span class="project-tech">AllReduce</span><span class="project-tech">GPU cluster</span></div>
         </div>
       </div>
@@ -734,7 +737,7 @@ footer{padding:2rem;border-top:1px solid var(--border);background:var(--bg-raise
         <div class="award-body"><p class="award-name">AI賞 — GDGoC Japan Hackathon 2026</p><p class="award-org">Google Developer Groups on Campus Japan</p></div>
         <p class="award-year">2026</p>
       </div>
-      <div class="award-item" data-aos="fade-up" data-aos-delay="40">
+      <!-- <div class="award-item" data-aos="fade-up" data-aos-delay="40">
         <div class="award-icon">&#128171;</div>
         <div class="award-body"><p class="award-name">夏季実習 採択 — システム計算科学センター</p><p class="award-org">日本原子力研究開発機構（JAEA） / 東海村</p></div>
         <p class="award-year">2025.08</p>
@@ -748,7 +751,7 @@ footer{padding:2rem;border-top:1px solid var(--border);background:var(--bg-raise
         <div class="award-icon">&#128203;</div>
         <div class="award-body"><p class="award-name">練習 ES通過 / SPI受験</p><p class="award-org">練習 — </p></div>
         <p class="award-year">2025</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
